@@ -1,1 +1,10 @@
 .vercel
+.env
+.env.*
+*.log
+*.bak
+*.tmp
+*.zip
+*.tar
+*.gz
+node_modules

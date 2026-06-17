@@ -20,4 +20,5 @@ jobs:
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-        run: npx vercel@54.1.0 deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
+          NPM_CONFIG_IGNORE_SCRIPTS: "true"
+        run: npx --yes vercel@54.14.2 deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
