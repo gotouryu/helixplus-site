@@ -515,10 +515,7 @@ h3 {
   gap: 0;
   min-height: 620px;
   padding: 0;
-  background:
-    radial-gradient(circle at 30% 48%, rgba(236, 208, 168, 0.12), transparent 36%),
-    linear-gradient(90deg, rgba(8, 10, 13, 0.82), rgba(18, 21, 26, 0.76)),
-    #0b0d10;
+  background: transparent;
   overflow: hidden;
   color: #fff;
 }
@@ -561,10 +558,8 @@ h3 {
   width: auto;
   min-height: 100%;
   padding: clamp(34px, 5vw, 64px);
-  border-right: 1px solid rgba(236, 208, 168, 0.18);
-  background:
-    linear-gradient(180deg, rgba(236, 208, 168, 0.055), rgba(255, 255, 255, 0.015) 44%, transparent),
-    transparent;
+  border-right: 0;
+  background: transparent;
   color: #fff;
   text-align: center;
   transform: none;
@@ -633,7 +628,7 @@ h3 {
   min-height: auto;
   padding: clamp(26px, 3vw, 44px);
   border-top: 1px solid rgba(255, 255, 255, 0.13);
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.035), transparent);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.032), rgba(255, 255, 255, 0.012));
 }
 
 .consult-item span {
