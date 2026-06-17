@@ -4,46 +4,66 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>DX・業務改善 | HELiXPLUS</title>
+    <meta name="description" content="紙、Excel、電話、チャットに散らばった業務を整理し、現場で使われるDXと業務改善を設計します。" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <header class="site-header">
       <a class="brand" href="./index.html"><img src="./assets/helixplus-logo.png" alt="HELiXPLUS" /><span>HELiXPLUS</span></a>
-      <nav class="nav"><a href="./dx.html">DX・業務改善</a><a href="./development.html">開発</a><a href="./consulting.html">ITコンサル</a><a href="./infrastructure.html">インフラ</a><a href="./works.html">事例</a><a href="./company.html">会社概要</a></nav>
+      <nav class="nav" aria-label="主要ナビゲーション"><a href="./dx.html">DX・業務改善</a><a href="./development.html">開発</a><a href="./consulting.html">ITコンサル</a><a href="./infrastructure.html">インフラ</a><a href="./works.html">事例</a><a href="./company.html">会社概要</a></nav>
     </header>
     <main>
       <section class="page-hero">
         <div>
           <p class="eyebrow">DX / BUSINESS IMPROVEMENT</p>
           <h1>毎日の手作業を、会社の資産になる流れへ。</h1>
-          <p class="page-lead">DXは大きなシステムを入れることだけではありません。紙、Excel、LINE、電話、属人化した確認を整理し、現場が迷わず動ける業務フローへ組み直します。</p>
+          <p class="page-lead">DXは大きなシステムを入れることだけではありません。紙、Excel、電話、LINE、属人化した確認を分解し、現場が迷わず動ける業務フローへ組み直します。</p>
         </div>
         <aside class="page-visual">
-          <p class="visual-title">業務改善フロー</p>
+          <p class="visual-title">業務改善の分解軸</p>
           <ol class="visual-flow">
-            <li><span>01</span><strong>入口を集約</strong><small>紙・Excel・電話・チャットを受付表へ整理</small></li>
-            <li><span>02</span><strong>確認を標準化</strong><small>入力、承認、差し戻し、通知を同じ手順へ</small></li>
-            <li><span>03</span><strong>改善を継続</strong><small>集計結果を見て、次の自動化範囲を決定</small></li>
+            <li><span>入口</span><strong>依頼・注文・問い合わせを一箇所に集める</strong><small>紙、電話、メール、LINE、Webフォームを受付表へ整理</small></li>
+            <li><span>処理</span><strong>担当、期限、承認、差し戻しを状態で見る</strong><small>誰で止まっているかを見えるようにする</small></li>
+            <li><span>数字</span><strong>日々の入力から改善指標を作る</strong><small>件数、作業時間、未対応、遅延を追う</small></li>
           </ol>
         </aside>
       </section>
-      <section class="section content-split">
-        <div class="section-head"><p class="eyebrow">APPROACH</p><h2>まず、現場で詰まっている作業を分解します。</h2></div>
-        <div class="text-block">
-          <p>担当者だけが知っている手順、二重入力、紙の回覧、チャットで流れてしまう依頼などを洗い出し、業務の入口から出口までを図にします。そのうえで、すぐ直す部分、システム化する部分、運用ルールで十分な部分を切り分けます。</p>
-          <div class="detail-grid">
-            <article class="detail-card"><h3>受発注の整理</h3><p>FAX・メール・電話の注文を一覧化し、確認漏れと転記作業を削減します。</p></article>
-            <article class="detail-card"><h3>承認フロー</h3><p>見積、稟議、請求、契約確認をステータス管理し、止まっている案件を見える化します。</p></article>
-            <article class="detail-card"><h3>レポート自動化</h3><p>日報、月報、SNSレポート、売上集計を自動生成し、報告作業を短縮します。</p></article>
-          </div>
+
+      <section class="section split-section">
+        <div class="section-head">
+          <p class="eyebrow">DIAGNOSIS</p>
+          <h2>改善前に、業務の詰まりを診断します。</h2>
+          <p class="section-lead">最初からツール名を決めません。何が止まっているか、誰が困っているか、どの数字を見れば改善と言えるかを決めてから実装範囲を絞ります。</p>
+        </div>
+        <div class="card-grid">
+          <article class="card"><span>01</span><h3>転記が多い業務</h3><p>受注、予約、問い合わせ、請求など、同じ内容を何度も入力している業務を特定します。</p></article>
+          <article class="card"><span>02</span><h3>確認待ちが多い業務</h3><p>承認、返信、担当割り、公開前チェックなど、誰で止まっているか分からない工程を整理します。</p></article>
+          <article class="card"><span>03</span><h3>集計が遅い業務</h3><p>月末にしか分からない売上、件数、対応状況を日次で見られる形に変えます。</p></article>
         </div>
       </section>
+
       <section class="section dark">
-        <div class="section-head"><p class="eyebrow">SAMPLE CASES</p><h2>DX・業務改善の想定事例</h2></div>
-        <div class="works-grid">
-          <article class="work-card"><p class="case-label">飲食店</p><h3>予約と仕入れの連動</h3><p>予約数に応じて仕入れ目安を出し、スタッフ共有と発注確認を一画面で管理。店長の確認時間を削減します。</p></article>
-          <article class="work-card"><p class="case-label">営業組織</p><h3>見積作成と案件追跡</h3><p>商談メモ、見積、受注見込みを一元管理し、対応漏れや二重対応を防ぎます。</p></article>
-          <article class="work-card"><p class="case-label">人材紹介</p><h3>求職者進捗の見える化</h3><p>面談、推薦、選考、内定、入社後フォローまでをステータス化し、担当者間の引き継ぎを簡単にします。</p></article>
+        <div class="section-head">
+          <p class="eyebrow">SAMPLE CASES</p>
+          <h2>DX・業務改善の具体シナリオ</h2>
+        </div>
+        <div class="process-grid">
+          <article class="process-card"><span>RESTAURANT</span><h3>予約と仕入れの連動</h3><p>電話予約とWeb予約を同じ台帳にまとめ、人数、席、注意事項、仕込み目安をスタッフが同じ画面で確認できる状態にします。</p></article>
+          <article class="process-card"><span>SALES</span><h3>見積作成と案件追跡</h3><p>商談メモ、見積、承認、納品、請求を案件ステータスにまとめ、管理者が未処理と遅延を確認できるようにします。</p></article>
+          <article class="process-card"><span>HR</span><h3>求職者進捗の見える化</h3><p>面談、推薦、選考、内定、入社後フォローを標準化し、担当者間の引き継ぎ漏れを防ぎます。</p></article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <p class="eyebrow">DELIVERABLES</p>
+          <h2>納品物は「資料」ではなく、実際に運用へ移せる形にします。</h2>
+        </div>
+        <div class="evidence-table">
+          <div class="evidence-row head"><span>成果物</span><span>内容</span><span>使う場面</span><span>判断材料</span></div>
+          <div class="evidence-row"><span data-label="成果物">業務フロー図</span><span data-label="内容">入口、処理、承認、出力を工程ごとに整理</span><span data-label="使う場面">開発前の要件整理、社内説明</span><span data-label="判断材料">削る作業 / 残す作業</span></div>
+          <div class="evidence-row"><span data-label="成果物">改善優先度表</span><span data-label="内容">効果、難易度、費用、運用負荷で並べ替え</span><span data-label="使う場面">初期実装の範囲決め</span><span data-label="判断材料">今やる / 後でやる</span></div>
+          <div class="evidence-row"><span data-label="成果物">運用ルール</span><span data-label="内容">担当、期限、確認頻度、例外対応を明文化</span><span data-label="使う場面">導入後の定着</span><span data-label="判断材料">誰が続けるか</span></div>
         </div>
       </section>
     </main>

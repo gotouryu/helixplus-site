@@ -4,15 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>アプリ・システム開発 | HELiXPLUS</title>
+    <meta name="description" content="予約、案件、顧客、承認、レポートなど、現場の運用に合わせた業務アプリと管理システムを開発します。" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <header class="site-header">
       <a class="brand" href="./index.html"><img src="./assets/helixplus-logo.png" alt="HELiXPLUS" /><span>HELiXPLUS</span></a>
-      <nav class="nav"><a href="./dx.html">DX・業務改善</a><a href="./development.html">開発</a><a href="./consulting.html">ITコンサル</a><a href="./infrastructure.html">インフラ</a><a href="./works.html">事例</a><a href="./company.html">会社概要</a></nav>
+      <nav class="nav" aria-label="主要ナビゲーション"><a href="./dx.html">DX・業務改善</a><a href="./development.html">開発</a><a href="./consulting.html">ITコンサル</a><a href="./infrastructure.html">インフラ</a><a href="./works.html">事例</a><a href="./company.html">会社概要</a></nav>
     </header>
     <main>
-      <section class="page-hero dark">
+      <section class="page-hero light">
         <div>
           <p class="eyebrow">APP / SYSTEM DEVELOPMENT</p>
           <h1>現場の使い方に合わせた、業務アプリと管理システム。</h1>
@@ -21,31 +22,49 @@
         <aside class="page-visual">
           <p class="visual-title">管理画面の設計例</p>
           <div class="visual-board">
-            <div><span>受付</span><strong>問い合わせ・予約</strong></div>
+            <div><span>受付</span><strong>問い合わせ・予約・申請</strong></div>
             <div><span>処理</span><strong>担当・期限・ステータス</strong></div>
             <div><span>確認</span><strong>承認・通知・履歴</strong></div>
             <div><span>分析</span><strong>売上・進捗・CSV出力</strong></div>
           </div>
         </aside>
       </section>
-      <section class="section content-split">
-        <div class="section-head"><p class="eyebrow">BUILD</p><h2>小さく始めて、運用に合わせて育てます。</h2></div>
-        <div class="text-block">
-          <p>初回から巨大なシステムを作るのではなく、業務の核になる部分から開発します。ログイン、権限、データ登録、検索、CSV出力、通知、スマホ対応など、現場に必要な機能を優先して実装します。</p>
-          <div class="detail-grid">
-            <article class="detail-card"><h3>予約管理アプリ</h3><p>予約受付、空き枠、顧客情報、リマインド通知をまとめて管理します。</p></article>
-            <article class="detail-card"><h3>案件管理システム</h3><p>問い合わせから受注、納品、請求までの状態を一覧で追跡します。</p></article>
-            <article class="detail-card"><h3>社内ポータル</h3><p>マニュアル、申請、共有資料、社内連絡を集約し、探す時間を減らします。</p></article>
-          </div>
+
+      <section class="section split-section">
+        <div class="section-head">
+          <p class="eyebrow">BUILD POLICY</p>
+          <h2>小さく作って、運用で強くする。</h2>
+          <p class="section-lead">初回から巨大なシステムを作ると、現場に定着する前に重くなります。まず業務の核になる部分を作り、使い方を見ながら画面とルールを磨きます。</p>
+        </div>
+        <div class="card-grid">
+          <article class="card"><span>01</span><h3>業務画面</h3><p>一覧、詳細、検索、編集、CSV出力など、日常で触る画面を迷わない構成にします。</p></article>
+          <article class="card"><span>02</span><h3>権限と履歴</h3><p>管理者、担当者、閲覧者の権限を分け、誰がいつ変更したかを追えるようにします。</p></article>
+          <article class="card"><span>03</span><h3>通知と集計</h3><p>期限、承認、未対応を通知し、入力されたデータから日次・月次の数字を作ります。</p></article>
         </div>
       </section>
+
       <section class="section dark">
-        <div class="section-head"><p class="eyebrow">SAMPLE WORKS</p><h2>現場作業が多い会社向けの開発シナリオ</h2></div>
+        <div class="section-head">
+          <p class="eyebrow">SYSTEM SCENARIOS</p>
+          <h2>開発シナリオ例</h2>
+        </div>
         <ol class="flow-list">
-          <li><span>01</span><div><h3>SNS運用会社向け 投稿管理システム</h3><p>投稿予定、素材、承認、公開状況、月次レポートを管理。クライアント別の進捗確認を簡単にします。</p></div></li>
-          <li><span>02</span><div><h3>店舗向け スタッフシフト・連絡アプリ</h3><p>希望シフト回収、確定シフト共有、急な欠勤連絡、既読確認までをスマホで完結させます。</p></div></li>
-          <li><span>03</span><div><h3>営業会社向け 見積・請求管理</h3><p>見積テンプレート、承認、請求ステータス、売上見込み集計を連動させます。</p></div></li>
+          <li><span>01</span><div><h3>SNS運用会社向け 投稿管理システム</h3><p>投稿予定、素材、承認、公開状況、月次レポートをクライアント別に管理。承認待ちと差し戻しを一覧で確認します。</p></div></li>
+          <li><span>02</span><div><h3>店舗向け シフト・連絡アプリ</h3><p>希望シフト回収、確定シフト共有、欠勤連絡、既読確認までをスマホで完結。店長の確認作業を減らします。</p></div></li>
+          <li><span>03</span><div><h3>営業会社向け 見積・請求管理</h3><p>見積テンプレート、上長承認、請求ステータス、売上見込み集計を連動させ、案件の止まりを見える化します。</p></div></li>
         </ol>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <p class="eyebrow">IMPLEMENTATION RANGE</p>
+          <h2>必要な機能だけを、運用に耐える順番で実装します。</h2>
+        </div>
+        <div class="metric-grid">
+          <article class="metric-card"><span>LOGIN</span><h3>ログイン・権限</h3><p>社内担当、管理者、外部確認者など、触れる情報を役割ごとに分けます。</p></article>
+          <article class="metric-card"><span>DATA</span><h3>登録・検索・一覧</h3><p>案件、顧客、予約、投稿、資料など、業務の中心データを扱いやすくします。</p></article>
+          <article class="metric-card"><span>REPORT</span><h3>集計・出力</h3><p>CSV、月次レポート、進捗表など、管理者が見たい形へ出力します。</p></article>
+        </div>
       </section>
     </main>
     <footer class="site-footer"><span>HELiXPLUS</span><span>Copyright © helixplus Co.,Ltd. All Rights Reserved.</span></footer>

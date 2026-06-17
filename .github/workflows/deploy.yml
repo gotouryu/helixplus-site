@@ -1,5 +1,8 @@
 name: Deploy to Vercel
 
+permissions:
+  contents: read
+
 on:
   push:
     branches:
@@ -17,4 +20,4 @@ jobs:
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-        run: npx vercel@latest deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
+        run: npx vercel@54.1.0 deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
