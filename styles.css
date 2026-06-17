@@ -415,6 +415,108 @@ h3 {
   background: var(--white);
 }
 
+.consult-map {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  min-height: 520px;
+  padding: 1px;
+  background:
+    linear-gradient(135deg, rgba(184, 138, 82, 0.48), rgba(20, 22, 26, 0.16)),
+    var(--line);
+  overflow: hidden;
+}
+
+.consult-map::before {
+  content: "";
+  position: absolute;
+  inset: 42px;
+  border: 1px solid rgba(184, 138, 82, 0.34);
+  transform: rotate(8deg);
+  pointer-events: none;
+}
+
+.consult-map::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  bottom: 10%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(184, 138, 82, 0.72), transparent);
+  transform: translateX(-50%) rotate(16deg);
+  pointer-events: none;
+}
+
+.consult-core {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 188px;
+  min-height: 188px;
+  padding: 18px;
+  border: 1px solid rgba(236, 208, 168, 0.52);
+  background: #0c0e12;
+  color: #fff;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+}
+
+.consult-core img {
+  width: 82px;
+  height: 82px;
+  object-fit: cover;
+  object-position: center 58%;
+  opacity: 0.92;
+}
+
+.consult-core strong {
+  margin-top: 8px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 15px;
+}
+
+.consult-core span {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.consult-item {
+  position: relative;
+  min-height: 258px;
+  padding: clamp(24px, 3vw, 34px);
+  background: #fff;
+}
+
+.consult-item span {
+  color: var(--gold);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.consult-item h3 {
+  margin-top: 24px;
+}
+
+.consult-item p {
+  max-width: 280px;
+  color: var(--muted);
+}
+
+.item-dx,
+.item-base {
+  display: grid;
+  justify-items: end;
+  text-align: right;
+}
+
 .section.dark .card,
 .section.dark .process-card,
 .section.dark .metric-card {
@@ -789,7 +891,8 @@ h3 {
   .metric-grid,
   .process-grid,
   .detail-grid,
-  .works-grid {
+  .works-grid,
+  .consult-map {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -830,8 +933,36 @@ h3 {
   .detail-grid,
   .works-grid,
   .case-study-grid,
-  .visual-board {
+  .visual-board,
+  .consult-map {
     grid-template-columns: 1fr;
+  }
+
+  .consult-map {
+    min-height: auto;
+  }
+
+  .consult-map::before,
+  .consult-map::after {
+    display: none;
+  }
+
+  .consult-core {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: auto;
+    min-height: 170px;
+    transform: none;
+    order: -1;
+  }
+
+  .consult-item,
+  .item-dx,
+  .item-base {
+    display: block;
+    min-height: 190px;
+    text-align: left;
   }
 
   .brand-stage,
