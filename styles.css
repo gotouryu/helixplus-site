@@ -240,15 +240,7 @@ h3 {
 }
 
 .hero::after {
-  content: "";
-  position: absolute;
-  right: -14vw;
-  bottom: -12vw;
-  width: 68vw;
-  height: 40vw;
-  border: 1px solid rgba(236, 208, 168, 0.15);
-  border-radius: 50%;
-  transform: rotate(-18deg);
+  content: none;
 }
 
 .hero-copy,
@@ -357,25 +349,11 @@ h3 {
 }
 
 .brand-stage::before {
-  content: "";
-  position: absolute;
-  inset: 7% -4% 7%;
-  border: 1px solid rgba(236, 208, 168, 0.22);
-  border-radius: 50%;
-  transform: rotate(-22deg);
+  content: none;
 }
 
 .brand-stage::after {
-  content: "";
-  position: absolute;
-  left: 12%;
-  right: 4%;
-  top: 18%;
-  height: 46%;
-  border-top: 1px solid rgba(236, 208, 168, 0.22);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.11);
-  border-radius: 50%;
-  transform: rotate(18deg);
+  content: none;
 }
 
 .hero-mark {
@@ -803,14 +781,7 @@ h3 {
 }
 
 .page-hero::after {
-  content: "";
-  position: absolute;
-  right: -70px;
-  top: 50px;
-  width: min(42vw, 520px);
-  height: min(42vw, 520px);
-  border: 1px solid rgba(236, 208, 168, 0.2);
-  transform: rotate(18deg);
+  content: none;
 }
 
 .page-lead {

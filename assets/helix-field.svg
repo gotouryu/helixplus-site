@@ -1,159 +1,245 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" fill="none">
   <defs>
-    <linearGradient id="goldLine" x1="-540" y1="0" x2="2220" y2="0" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#6F7178" stop-opacity=".06"/>
-      <stop offset=".42" stop-color="#ECD0A8" stop-opacity=".34"/>
-      <stop offset=".58" stop-color="#B88A52" stop-opacity=".3"/>
-      <stop offset="1" stop-color="#FFFFFF" stop-opacity=".07"/>
+    <linearGradient id="helixGold" x1="0" y1="-24" x2="240" y2="24" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6F7178" stop-opacity=".08"/>
+      <stop offset=".32" stop-color="#EED6B2" stop-opacity=".56"/>
+      <stop offset=".54" stop-color="#B88A52" stop-opacity=".46"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity=".08"/>
     </linearGradient>
-    <linearGradient id="whiteLine" x1="-540" y1="0" x2="2220" y2="0" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#FFFFFF" stop-opacity=".04"/>
-      <stop offset=".5" stop-color="#FFFFFF" stop-opacity=".19"/>
-      <stop offset="1" stop-color="#ECD0A8" stop-opacity=".09"/>
+    <linearGradient id="helixSteel" x1="0" y1="-24" x2="240" y2="24" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" stop-opacity=".06"/>
+      <stop offset=".45" stop-color="#FFFFFF" stop-opacity=".38"/>
+      <stop offset="1" stop-color="#ECD0A8" stop-opacity=".12"/>
     </linearGradient>
-    <filter id="lineGlow" x="-12%" y="-24%" width="124%" height="148%">
-      <feGaussianBlur stdDeviation="3.8" result="blur"/>
+    <filter id="softGlow" x="-8%" y="-140%" width="116%" height="380%">
+      <feGaussianBlur stdDeviation="2.4" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+    <symbol id="microHelix" viewBox="0 -30 240 60" overflow="visible">
+      <path class="back strand" stroke="url(#helixGold)" d="M0 0 C20 -16 40 -16 60 0 C80 16 100 16 120 0 C140 -16 160 -16 180 0 C200 16 220 16 240 0"/>
+      <path class="front strand" stroke="url(#helixSteel)" d="M0 0 C20 16 40 16 60 0 C80 -16 100 -16 120 0 C140 16 160 16 180 0 C200 -16 220 -16 240 0"/>
+      <g class="rungs" stroke="#ECD0A8">
+        <line x1="30" y1="-16" x2="30" y2="16"/>
+        <line x1="90" y1="16" x2="90" y2="-16"/>
+        <line x1="150" y1="-16" x2="150" y2="16"/>
+        <line x1="210" y1="16" x2="210" y2="-16"/>
+      </g>
+    </symbol>
   </defs>
 
   <style>
-    .helix {
+    .helix-layer,
+    .stream {
       transform-box: fill-box;
       transform-origin: center;
     }
 
-    .field-a {
-      animation: drift-a 26s ease-in-out infinite alternate;
-    }
-
-    .field-b {
-      animation: drift-b 31s ease-in-out infinite alternate;
-    }
-
-    .travel-left {
-      animation: travel-left 40s linear infinite;
-    }
-
-    .travel-right {
-      animation: travel-right 48s linear infinite;
-    }
-
     .strand,
-    .front,
-    .back,
-    .bridge {
+    .rungs line {
       stroke-linecap: round;
       stroke-linejoin: round;
+      vector-effect: non-scaling-stroke;
+    }
+
+    .strand {
+      stroke-width: 1.48;
+      filter: url(#softGlow);
     }
 
     .front {
-      animation: front-depth 7.5s ease-in-out infinite;
+      animation: front-rotate 6s linear infinite;
     }
 
     .back {
-      animation: back-depth 7.5s ease-in-out infinite;
+      animation: back-rotate 6s linear infinite;
     }
 
-    .front.alt {
-      animation-delay: -3.75s;
+    .rungs {
+      stroke-width: .78;
+      stroke-opacity: .3;
+      animation: rung-rotate 6s linear infinite;
     }
 
-    .back.alt {
-      animation-delay: -3.75s;
+    .stream-left {
+      animation: flow-left 24s linear infinite;
     }
 
-    .bridge {
-      animation: bridge-breathe 7.5s ease-in-out infinite;
+    .stream-right {
+      animation: flow-right 24s linear infinite;
     }
 
-    @keyframes travel-left {
-      from { transform: translateX(220px); }
-      to { transform: translateX(-220px); }
+    .stream-left.slow {
+      animation-duration: 36s;
     }
 
-    @keyframes travel-right {
+    .stream-right.slow {
+      animation-duration: 36s;
+    }
+
+    .float-a {
+      animation: float-a 18s linear infinite;
+    }
+
+    .float-b {
+      animation: float-b 22s linear infinite;
+    }
+
+    .float-c {
+      animation: float-c 26s linear infinite;
+    }
+
+    @keyframes flow-left {
+      from { transform: translateX(0); }
+      to { transform: translateX(-240px); }
+    }
+
+    @keyframes flow-right {
       from { transform: translateX(-240px); }
-      to { transform: translateX(240px); }
+      to { transform: translateX(0); }
     }
 
-    @keyframes drift-a {
-      0% { transform: translate(-18px, 10px) skewX(-1.4deg); }
-      28% { transform: translate(9px, -8px) skewX(.8deg); }
-      63% { transform: translate(22px, 13px) skewX(1.2deg); }
-      100% { transform: translate(-10px, -6px) skewX(-.7deg); }
+    @keyframes front-rotate {
+      0%, 100% { stroke-opacity: .22; stroke-width: 1.05; }
+      25% { stroke-opacity: .72; stroke-width: 2.05; }
+      50% { stroke-opacity: .2; stroke-width: .9; }
+      75% { stroke-opacity: .58; stroke-width: 1.7; }
     }
 
-    @keyframes drift-b {
-      0% { transform: translate(16px, -12px) skewX(1deg); }
-      41% { transform: translate(-13px, 9px) skewX(-1.1deg); }
-      77% { transform: translate(8px, 15px) skewX(.5deg); }
-      100% { transform: translate(-20px, -5px) skewX(-.8deg); }
+    @keyframes back-rotate {
+      0%, 100% { stroke-opacity: .62; stroke-width: 1.9; }
+      25% { stroke-opacity: .18; stroke-width: .88; }
+      50% { stroke-opacity: .58; stroke-width: 1.7; }
+      75% { stroke-opacity: .16; stroke-width: .84; }
     }
 
-    @keyframes front-depth {
-      0%, 100% { stroke-opacity: .14; stroke-width: 1.1; }
-      48%, 56% { stroke-opacity: .72; stroke-width: 3; }
+    @keyframes rung-rotate {
+      0%, 100% { opacity: .18; }
+      25% { opacity: .34; }
+      50% { opacity: .16; }
+      75% { opacity: .28; }
     }
 
-    @keyframes back-depth {
-      0%, 100% { stroke-opacity: .48; stroke-width: 2.2; }
-      48%, 56% { stroke-opacity: .08; stroke-width: .9; }
+    @keyframes float-a {
+      0%, 100% { transform: translate(0, 0) skewX(0deg); }
+      25% { transform: translate(14px, -10px) skewX(.7deg); }
+      50% { transform: translate(28px, 4px) skewX(-.5deg); }
+      75% { transform: translate(10px, 12px) skewX(.4deg); }
     }
 
-    @keyframes bridge-breathe {
-      0%, 100% { stroke-opacity: .1; }
-      48%, 56% { stroke-opacity: .28; }
+    @keyframes float-b {
+      0%, 100% { transform: translate(0, 0) skewX(0deg); }
+      25% { transform: translate(-10px, 8px) skewX(-.5deg); }
+      50% { transform: translate(-24px, -6px) skewX(.6deg); }
+      75% { transform: translate(-8px, -14px) skewX(-.3deg); }
+    }
+
+    @keyframes float-c {
+      0%, 100% { transform: translate(0, 0) skewX(0deg); }
+      25% { transform: translate(9px, 11px) skewX(.4deg); }
+      50% { transform: translate(-18px, 2px) skewX(-.7deg); }
+      75% { transform: translate(6px, -12px) skewX(.5deg); }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .field-a,
-      .field-b,
-      .travel-left,
-      .travel-right,
       .front,
       .back,
-      .bridge {
+      .rungs,
+      .stream-left,
+      .stream-right,
+      .float-a,
+      .float-b,
+      .float-c {
         animation: none;
       }
     }
   </style>
 
-  <g class="helix field-a">
-    <g class="helix travel-left">
-      <path class="strand back" stroke="url(#goldLine)" filter="url(#lineGlow)"
-        d="M-540 540 C-420 435 -300 435 -180 540 C-60 645 60 645 180 540 C300 435 420 435 540 540 C660 645 780 645 900 540 C1020 435 1140 435 1260 540 C1380 645 1500 645 1620 540 C1740 435 1860 435 1980 540 C2100 645 2220 645 2340 540"/>
-      <path class="strand front alt" stroke="url(#goldLine)" filter="url(#lineGlow)"
-        d="M-540 540 C-420 435 -300 435 -180 540 C-60 645 60 645 180 540 C300 435 420 435 540 540 C660 645 780 645 900 540 C1020 435 1140 435 1260 540 C1380 645 1500 645 1620 540 C1740 435 1860 435 1980 540 C2100 645 2220 645 2340 540"/>
-      <path class="strand front" stroke="url(#whiteLine)"
-        d="M-540 400 C-420 505 -300 505 -180 400 C-60 295 60 295 180 400 C300 505 420 505 540 400 C660 295 780 295 900 400 C1020 505 1140 505 1260 400 C1380 295 1500 295 1620 400 C1740 505 1860 505 1980 400 C2100 295 2220 295 2340 400"/>
-      <path class="strand back alt" stroke="url(#whiteLine)"
-        d="M-540 400 C-420 505 -300 505 -180 400 C-60 295 60 295 180 400 C300 505 420 505 540 400 C660 295 780 295 900 400 C1020 505 1140 505 1260 400 C1380 295 1500 295 1620 400 C1740 505 1860 505 1980 400 C2100 295 2220 295 2340 400"/>
-      <g stroke="#ECD0A8" stroke-width=".85">
-        <line class="bridge" x1="-180" y1="540" x2="-180" y2="400"/>
-        <line class="bridge" x1="180" y1="540" x2="180" y2="400"/>
-        <line class="bridge" x1="540" y1="540" x2="540" y2="400"/>
-        <line class="bridge" x1="900" y1="540" x2="900" y2="400"/>
-        <line class="bridge" x1="1260" y1="540" x2="1260" y2="400"/>
-        <line class="bridge" x1="1620" y1="540" x2="1620" y2="400"/>
-        <line class="bridge" x1="1980" y1="540" x2="1980" y2="400"/>
+  <g class="helix-layer" opacity=".98" transform="translate(-420 250) rotate(-7)">
+    <g class="float-a">
+      <g class="stream stream-left">
+        <use href="#microHelix" x="0" y="0"/>
+        <use href="#microHelix" x="240" y="0"/>
+        <use href="#microHelix" x="480" y="0"/>
+        <use href="#microHelix" x="720" y="0"/>
+        <use href="#microHelix" x="960" y="0"/>
+        <use href="#microHelix" x="1200" y="0"/>
+        <use href="#microHelix" x="1440" y="0"/>
+        <use href="#microHelix" x="1680" y="0"/>
+        <use href="#microHelix" x="1920" y="0"/>
+        <use href="#microHelix" x="2160" y="0"/>
+        <use href="#microHelix" x="2400" y="0"/>
       </g>
     </g>
   </g>
 
-  <g class="helix field-b" opacity=".42" transform="translate(0 -230) scale(1.03)">
-    <g class="helix travel-right">
-      <path class="strand back" stroke="#ECD0A8"
-        d="M-560 300 C-450 222 -340 222 -230 300 C-120 378 -10 378 100 300 C210 222 320 222 430 300 C540 378 650 378 760 300 C870 222 980 222 1090 300 C1200 378 1310 378 1420 300 C1530 222 1640 222 1750 300 C1860 378 1970 378 2080 300"/>
-      <path class="strand front alt" stroke="#ECD0A8"
-        d="M-560 300 C-450 222 -340 222 -230 300 C-120 378 -10 378 100 300 C210 222 320 222 430 300 C540 378 650 378 760 300 C870 222 980 222 1090 300 C1200 378 1310 378 1420 300 C1530 222 1640 222 1750 300 C1860 378 1970 378 2080 300"/>
-      <path class="strand front" stroke="#FFFFFF"
-        d="M-560 196 C-450 274 -340 274 -230 196 C-120 118 -10 118 100 196 C210 274 320 274 430 196 C540 118 650 118 760 196 C870 274 980 274 1090 196 C1200 118 1310 118 1420 196 C1530 274 1640 274 1750 196 C1860 118 1970 118 2080 196"/>
-      <path class="strand back alt" stroke="#FFFFFF"
-        d="M-560 196 C-450 274 -340 274 -230 196 C-120 118 -10 118 100 196 C210 274 320 274 430 196 C540 118 650 118 760 196 C870 274 980 274 1090 196 C1200 118 1310 118 1420 196 C1530 274 1640 274 1750 196 C1860 118 1970 118 2080 196"/>
+  <g class="helix-layer" opacity=".86" transform="translate(-500 420) rotate(11)">
+    <g class="float-b">
+      <g class="stream stream-right">
+        <use href="#microHelix" x="0" y="0"/>
+        <use href="#microHelix" x="240" y="0"/>
+        <use href="#microHelix" x="480" y="0"/>
+        <use href="#microHelix" x="720" y="0"/>
+        <use href="#microHelix" x="960" y="0"/>
+        <use href="#microHelix" x="1200" y="0"/>
+        <use href="#microHelix" x="1440" y="0"/>
+        <use href="#microHelix" x="1680" y="0"/>
+        <use href="#microHelix" x="1920" y="0"/>
+        <use href="#microHelix" x="2160" y="0"/>
+        <use href="#microHelix" x="2400" y="0"/>
+      </g>
+    </g>
+  </g>
+
+  <g class="helix-layer" opacity=".72" transform="translate(-390 590) rotate(-14) scale(1.08)">
+    <g class="float-c">
+      <g class="stream stream-left slow">
+        <use href="#microHelix" x="0" y="0"/>
+        <use href="#microHelix" x="240" y="0"/>
+        <use href="#microHelix" x="480" y="0"/>
+        <use href="#microHelix" x="720" y="0"/>
+        <use href="#microHelix" x="960" y="0"/>
+        <use href="#microHelix" x="1200" y="0"/>
+        <use href="#microHelix" x="1440" y="0"/>
+        <use href="#microHelix" x="1680" y="0"/>
+        <use href="#microHelix" x="1920" y="0"/>
+        <use href="#microHelix" x="2160" y="0"/>
+        <use href="#microHelix" x="2400" y="0"/>
+      </g>
+    </g>
+  </g>
+
+  <g class="helix-layer" opacity=".34" transform="translate(-520 160) rotate(4) scale(.92)">
+    <g class="stream stream-right slow">
+      <use href="#microHelix" x="0" y="0"/>
+      <use href="#microHelix" x="240" y="0"/>
+      <use href="#microHelix" x="480" y="0"/>
+      <use href="#microHelix" x="720" y="0"/>
+      <use href="#microHelix" x="960" y="0"/>
+      <use href="#microHelix" x="1200" y="0"/>
+      <use href="#microHelix" x="1440" y="0"/>
+      <use href="#microHelix" x="1680" y="0"/>
+      <use href="#microHelix" x="1920" y="0"/>
+      <use href="#microHelix" x="2160" y="0"/>
+      <use href="#microHelix" x="2400" y="0"/>
+    </g>
+  </g>
+
+  <g class="helix-layer" opacity=".28" transform="translate(-460 750) rotate(6) scale(.86)">
+    <g class="stream stream-left slow">
+      <use href="#microHelix" x="0" y="0"/>
+      <use href="#microHelix" x="240" y="0"/>
+      <use href="#microHelix" x="480" y="0"/>
+      <use href="#microHelix" x="720" y="0"/>
+      <use href="#microHelix" x="960" y="0"/>
+      <use href="#microHelix" x="1200" y="0"/>
+      <use href="#microHelix" x="1440" y="0"/>
+      <use href="#microHelix" x="1680" y="0"/>
+      <use href="#microHelix" x="1920" y="0"/>
+      <use href="#microHelix" x="2160" y="0"/>
+      <use href="#microHelix" x="2400" y="0"/>
     </g>
   </g>
 </svg>
