@@ -109,76 +109,6 @@ h3 {
   font-weight: 850;
 }
 
-@keyframes helixFieldDrift {
-  0% {
-    background-position:
-      48% 50%,
-      78% 48%,
-      16% 16%,
-      center;
-    background-size:
-      112% auto,
-      auto,
-      auto,
-      auto;
-  }
-
-  50% {
-    background-position:
-      53% 46%,
-      74% 52%,
-      20% 14%,
-      center;
-    background-size:
-      118% auto,
-      auto,
-      auto,
-      auto;
-  }
-
-  100% {
-    background-position:
-      46% 54%,
-      82% 45%,
-      13% 20%,
-      center;
-    background-size:
-      114% auto,
-      auto,
-      auto,
-      auto;
-  }
-}
-
-@keyframes helixFieldDriftSimple {
-  0% {
-    background-position:
-      48% 50%,
-      center;
-    background-size:
-      112% auto,
-      auto;
-  }
-
-  50% {
-    background-position:
-      53% 46%,
-      center;
-    background-size:
-      118% auto,
-      auto;
-  }
-
-  100% {
-    background-position:
-      46% 54%,
-      center;
-    background-size:
-      114% auto,
-      auto;
-  }
-}
-
 .site-header {
   position: sticky;
   top: 0;
@@ -296,7 +226,6 @@ h3 {
     radial-gradient(circle at 78% 48%, rgba(184, 138, 82, 0.2), transparent 34%),
     radial-gradient(circle at 16% 16%, rgba(255, 255, 255, 0.08), transparent 26%),
     linear-gradient(135deg, #050608 0%, #11151b 54%, #231f19 100%);
-  animation: helixFieldDrift 26s ease-in-out infinite alternate;
   color: #fff;
 }
 
@@ -518,7 +447,6 @@ h3 {
   background:
     url("./assets/helix-field.svg") center / cover no-repeat,
     linear-gradient(135deg, #0b0d10 0%, #141820 100%);
-  animation: helixFieldDriftSimple 32s ease-in-out infinite alternate;
   color: #fff;
 }
 
@@ -854,7 +782,6 @@ h3 {
   background:
     url("./assets/helix-field.svg") center / cover no-repeat,
     linear-gradient(135deg, #090a0d 0%, #171b22 70%, #2a241d 100%);
-  animation: helixFieldDriftSimple 30s ease-in-out infinite alternate;
   color: #fff;
 }
 
@@ -872,7 +799,6 @@ h3 {
   background:
     url("./assets/helix-field.svg") center / cover no-repeat,
     linear-gradient(135deg, #111419 0%, #f0e7d8 180%);
-  animation-duration: 34s;
   color: #fff;
 }
 
@@ -1143,7 +1069,6 @@ h3 {
   background:
     url("./assets/helix-field.svg") center / cover no-repeat,
     var(--deep);
-  animation: helixFieldDriftSimple 28s ease-in-out infinite alternate;
   color: #fff;
 }
 
@@ -1401,12 +1326,4 @@ h3 {
     scroll-behavior: auto;
   }
 
-  .hero,
-  .page-hero,
-  .section.dark,
-  .cta-band,
-  .closing-cta,
-  .section-cta {
-    animation: none;
-  }
 }
