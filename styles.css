@@ -511,13 +511,13 @@ h3 {
 .consult-map {
   position: relative;
   display: grid;
-  grid-template-columns: 0.86fr 1fr;
+  grid-template-columns: minmax(250px, 0.62fr) minmax(0, 1fr);
   gap: 0;
   min-height: 620px;
   padding: 0;
   background:
     radial-gradient(circle at 30% 48%, rgba(236, 208, 168, 0.12), transparent 36%),
-    linear-gradient(90deg, rgba(7, 8, 10, 0.86), rgba(20, 23, 28, 0.74)),
+    linear-gradient(90deg, rgba(8, 10, 13, 0.82), rgba(18, 21, 26, 0.76)),
     #0b0d10;
   overflow: hidden;
   color: #fff;
@@ -556,41 +556,75 @@ h3 {
   left: auto;
   top: auto;
   display: grid;
-  place-items: center;
+  align-items: stretch;
   align-self: stretch;
   width: auto;
   min-height: 100%;
-  padding: clamp(34px, 5vw, 72px);
-  border: 0;
-  background: transparent;
+  padding: clamp(34px, 5vw, 64px);
+  border-right: 1px solid rgba(236, 208, 168, 0.18);
+  background:
+    linear-gradient(180deg, rgba(236, 208, 168, 0.055), rgba(255, 255, 255, 0.015) 44%, transparent),
+    transparent;
   color: #fff;
   text-align: center;
   transform: none;
   grid-row: span 4;
 }
 
-.consult-core img {
-  width: min(34vw, 430px);
-  min-width: 260px;
-  height: auto;
-  object-fit: contain;
-  opacity: 0.98;
-  filter:
-    drop-shadow(0 30px 58px rgba(0, 0, 0, 0.55))
-    drop-shadow(0 0 34px rgba(236, 208, 168, 0.24));
+.axis-copy {
+  position: relative;
+  display: grid;
+  align-content: center;
+  gap: clamp(6px, 1.1vw, 10px);
+  justify-items: start;
+  text-align: left;
+  min-height: 100%;
+  padding-left: clamp(18px, 3vw, 34px);
+  transform: translateY(-14%);
 }
 
-.consult-core strong {
-  margin-top: 20px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(24px, 3vw, 38px);
-  line-height: 1;
+.axis-copy::after {
+  content: "";
+  position: absolute;
+  inset: 8% -26% 8% 12%;
+  border: 1px solid rgba(236, 208, 168, 0.2);
+  border-radius: 50%;
+  transform: rotate(-23deg);
 }
 
-.consult-core span {
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 14px;
-  line-height: 1.5;
+.axis-copy::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 20%;
+  bottom: 16%;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(236, 208, 168, 0.7), rgba(236, 208, 168, 0.08));
+}
+
+.axis-copy span {
+  position: relative;
+  z-index: 1;
+  color: var(--gold-soft);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.axis-copy strong {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  font-size: clamp(20px, 2vw, 28px);
+  line-height: 1.15;
+}
+
+.axis-copy i {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: min(11vw, 128px);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(236, 208, 168, 0.64), transparent);
 }
 
 .consult-item {
@@ -1034,6 +1068,10 @@ h3 {
 
   h1 span {
     white-space: normal;
+  }
+
+  .hero-signature {
+    display: none;
   }
 
   .hero-kicker {
