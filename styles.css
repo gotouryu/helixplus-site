@@ -218,9 +218,20 @@ img {
 
 .pipeline i {
   display: block;
-  width: var(--w);
   height: 8px;
   background: linear-gradient(90deg, var(--gold2), #f6e1bd);
+}
+
+.bar-78 {
+  width: 78%;
+}
+
+.bar-64 {
+  width: 64%;
+}
+
+.bar-52 {
+  width: 52%;
 }
 
 .diagnosis {
