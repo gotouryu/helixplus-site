@@ -280,7 +280,7 @@ h3 {
   justify-content: space-between;
   gap: 0.02em;
   margin: 0;
-  color: rgba(255, 255, 255, 0.043);
+  color: rgba(255, 255, 255, 0.072);
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(52px, 8.4vw, 116px);
   font-weight: 900;
@@ -288,21 +288,25 @@ h3 {
   white-space: nowrap;
   pointer-events: none;
   perspective: 900px;
+  transform-style: preserve-3d;
 }
 
 .hero-signature span {
   display: inline-block;
   transform-origin: 50% 52%;
-  animation: signature-letter-spin 8.4s linear infinite;
-  animation-delay: calc(var(--i) * 0.18s);
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+  animation: signature-letter-spin 3.2s linear infinite;
+  animation-delay: calc(var(--i) * -0.26s);
   will-change: transform, opacity;
 }
 
 @keyframes signature-letter-spin {
-  0% { opacity: .45; transform: rotateY(0deg) translateZ(0); }
-  10% { opacity: .78; transform: rotateY(110deg) translateZ(12px); }
-  20% { opacity: .5; transform: rotateY(220deg) translateZ(0); }
-  30%, 100% { opacity: .45; transform: rotateY(360deg) translateZ(0); }
+  0% { opacity: .42; transform: rotateY(0deg) translateZ(0) scaleX(1); }
+  25% { opacity: .82; transform: rotateY(90deg) translateZ(18px) scaleX(.32); }
+  50% { opacity: .56; transform: rotateY(180deg) translateZ(0) scaleX(1); }
+  75% { opacity: .82; transform: rotateY(270deg) translateZ(18px) scaleX(.32); }
+  100% { opacity: .42; transform: rotateY(360deg) translateZ(0) scaleX(1); }
 }
 
 .hero-copy {
