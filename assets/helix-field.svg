@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" fill="none">
   <defs>
-    <linearGradient id="goldSkin" x1="-1120" y1="-24" x2="2800" y2="24" gradientUnits="userSpaceOnUse">
+    <linearGradient id="goldSkin" x1="0" y1="-24" x2="560" y2="24" gradientUnits="userSpaceOnUse">
       <stop stop-color="#15171c" stop-opacity=".32"/>
       <stop offset=".14" stop-color="#6c7078" stop-opacity=".5"/>
       <stop offset=".28" stop-color="#fff2dc" stop-opacity=".92"/>
@@ -10,7 +10,7 @@
       <stop offset="1" stop-color="#f7f8fa" stop-opacity=".24"/>
       <animateTransform attributeName="gradientTransform" type="translate" values="-180 0;180 0;-180 0" dur="6.4s" repeatCount="indefinite"/>
     </linearGradient>
-    <linearGradient id="steelSkin" x1="-1120" y1="24" x2="2800" y2="-24" gradientUnits="userSpaceOnUse">
+    <linearGradient id="steelSkin" x1="0" y1="24" x2="560" y2="-24" gradientUnits="userSpaceOnUse">
       <stop stop-color="#fbfcff" stop-opacity=".28"/>
       <stop offset=".17" stop-color="#191c22" stop-opacity=".72"/>
       <stop offset=".36" stop-color="#f8fbff" stop-opacity=".88"/>
@@ -19,7 +19,7 @@
       <stop offset="1" stop-color="#111319" stop-opacity=".34"/>
       <animateTransform attributeName="gradientTransform" type="translate" values="160 0;-160 0;160 0" dur="6.4s" repeatCount="indefinite"/>
     </linearGradient>
-    <linearGradient id="crestLight" x1="-1120" y1="0" x2="2800" y2="0" gradientUnits="userSpaceOnUse">
+    <linearGradient id="crestLight" x1="0" y1="0" x2="560" y2="0" gradientUnits="userSpaceOnUse">
       <stop stop-color="#ffffff" stop-opacity="0"/>
       <stop offset=".24" stop-color="#ffffff" stop-opacity=".82"/>
       <stop offset=".43" stop-color="#fff1d2" stop-opacity=".48"/>
@@ -27,20 +27,24 @@
       <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
       <animateTransform attributeName="gradientTransform" type="translate" values="-130 0;130 0;-130 0" dur="6.4s" repeatCount="indefinite"/>
     </linearGradient>
-    <g id="continuousMetalHelix">
-      <path class="strand shadow-a" d="M-1120 0 C-1074 -33 -1026 -33 -980 0 C-934 33 -886 33 -840 0 C-794 -33 -746 -33 -700 0 C-654 33 -606 33 -560 0 C-514 -33 -466 -33 -420 0 C-374 33 -326 33 -280 0 C-234 -33 -186 -33 -140 0 C-94 33 -46 33 0 0 C46 -33 94 -33 140 0 C186 33 234 33 280 0 C326 -33 374 -33 420 0 C466 33 514 33 560 0 C606 -33 654 -33 700 0 C746 33 794 33 840 0 C886 -33 934 -33 980 0 C1026 33 1074 33 1120 0 C1166 -33 1214 -33 1260 0 C1306 33 1354 33 1400 0 C1446 -33 1494 -33 1540 0 C1586 33 1634 33 1680 0 C1726 -33 1774 -33 1820 0 C1866 33 1914 33 1960 0 C2006 -33 2054 -33 2100 0 C2146 33 2194 33 2240 0 C2286 -33 2334 -33 2380 0 C2426 33 2474 33 2520 0 C2566 -33 2614 -33 2660 0 C2706 33 2754 33 2800 0"/>
-      <path class="strand shadow-b" d="M-1120 0 C-1074 33 -1026 33 -980 0 C-934 -33 -886 -33 -840 0 C-794 33 -746 33 -700 0 C-654 -33 -606 -33 -560 0 C-514 33 -466 33 -420 0 C-374 -33 -326 -33 -280 0 C-234 33 -186 33 -140 0 C-94 -33 -46 -33 0 0 C46 33 94 33 140 0 C186 -33 234 -33 280 0 C326 33 374 33 420 0 C466 -33 514 -33 560 0 C606 33 654 33 700 0 C746 -33 794 -33 840 0 C886 33 934 33 980 0 C1026 -33 1074 -33 1120 0 C1166 33 1214 33 1260 0 C1306 -33 1354 -33 1400 0 C1446 33 1494 33 1540 0 C1586 -33 1634 -33 1680 0 C1726 33 1774 33 1820 0 C1866 -33 1914 -33 1960 0 C2006 33 2054 33 2100 0 C2146 -33 2194 -33 2240 0 C2286 33 2334 33 2380 0 C2426 -33 2474 -33 2520 0 C2566 33 2614 33 2660 0 C2706 -33 2754 -33 2800 0"/>
-      <path class="strand steel" d="M-1120 0 C-1074 -33 -1026 -33 -980 0 C-934 33 -886 33 -840 0 C-794 -33 -746 -33 -700 0 C-654 33 -606 33 -560 0 C-514 -33 -466 -33 -420 0 C-374 33 -326 33 -280 0 C-234 -33 -186 -33 -140 0 C-94 33 -46 33 0 0 C46 -33 94 -33 140 0 C186 33 234 33 280 0 C326 -33 374 -33 420 0 C466 33 514 33 560 0 C606 -33 654 -33 700 0 C746 33 794 33 840 0 C886 -33 934 -33 980 0 C1026 33 1074 33 1120 0 C1166 -33 1214 -33 1260 0 C1306 33 1354 33 1400 0 C1446 -33 1494 -33 1540 0 C1586 33 1634 33 1680 0 C1726 -33 1774 -33 1820 0 C1866 33 1914 33 1960 0 C2006 -33 2054 -33 2100 0 C2146 33 2194 33 2240 0 C2286 -33 2334 -33 2380 0 C2426 33 2474 33 2520 0 C2566 -33 2614 -33 2660 0 C2706 33 2754 33 2800 0"/>
-      <path class="strand gold" d="M-1120 0 C-1074 33 -1026 33 -980 0 C-934 -33 -886 -33 -840 0 C-794 33 -746 33 -700 0 C-654 -33 -606 -33 -560 0 C-514 33 -466 33 -420 0 C-374 -33 -326 -33 -280 0 C-234 33 -186 33 -140 0 C-94 -33 -46 -33 0 0 C46 33 94 33 140 0 C186 -33 234 -33 280 0 C326 33 374 33 420 0 C466 -33 514 -33 560 0 C606 33 654 33 700 0 C746 -33 794 -33 840 0 C886 33 934 33 980 0 C1026 -33 1074 -33 1120 0 C1166 33 1214 33 1260 0 C1306 -33 1354 -33 1400 0 C1446 33 1494 33 1540 0 C1586 -33 1634 -33 1680 0 C1726 33 1774 33 1820 0 C1866 -33 1914 -33 1960 0 C2006 33 2054 33 2100 0 C2146 -33 2194 -33 2240 0 C2286 33 2334 33 2380 0 C2426 -33 2474 -33 2520 0 C2566 33 2614 33 2660 0 C2706 -33 2754 -33 2800 0"/>
-      <path class="crest crest-a" d="M-1120 0 C-1074 -33 -1026 -33 -980 0 C-934 33 -886 33 -840 0 C-794 -33 -746 -33 -700 0 C-654 33 -606 33 -560 0 C-514 -33 -466 -33 -420 0 C-374 33 -326 33 -280 0 C-234 -33 -186 -33 -140 0 C-94 33 -46 33 0 0 C46 -33 94 -33 140 0 C186 33 234 33 280 0 C326 -33 374 -33 420 0 C466 33 514 33 560 0 C606 -33 654 -33 700 0 C746 33 794 33 840 0 C886 -33 934 -33 980 0 C1026 33 1074 33 1120 0 C1166 -33 1214 -33 1260 0 C1306 33 1354 33 1400 0 C1446 -33 1494 -33 1540 0 C1586 33 1634 33 1680 0 C1726 -33 1774 -33 1820 0 C1866 33 1914 33 1960 0 C2006 -33 2054 -33 2100 0 C2146 33 2194 33 2240 0 C2286 -33 2334 -33 2380 0 C2426 33 2474 33 2520 0 C2566 -33 2614 -33 2660 0 C2706 33 2754 33 2800 0"/>
-      <path class="crest crest-b" d="M-1120 0 C-1074 33 -1026 33 -980 0 C-934 -33 -886 -33 -840 0 C-794 33 -746 33 -700 0 C-654 -33 -606 -33 -560 0 C-514 33 -466 33 -420 0 C-374 -33 -326 -33 -280 0 C-234 33 -186 33 -140 0 C-94 -33 -46 -33 0 0 C46 33 94 33 140 0 C186 -33 234 -33 280 0 C326 33 374 33 420 0 C466 -33 514 -33 560 0 C606 33 654 33 700 0 C746 -33 794 -33 840 0 C886 33 934 33 980 0 C1026 -33 1074 -33 1120 0 C1166 33 1214 33 1260 0 C1306 -33 1354 -33 1400 0 C1446 33 1494 33 1540 0 C1586 -33 1634 -33 1680 0 C1726 33 1774 33 1820 0 C1866 -33 1914 -33 1960 0 C2006 33 2054 33 2100 0 C2146 -33 2194 -33 2240 0 C2286 33 2334 33 2380 0 C2426 -33 2474 -33 2520 0 C2566 33 2614 33 2660 0 C2706 -33 2754 -33 2800 0"/>
+    <filter id="metalDepth" x="-8%" y="-180%" width="116%" height="460%">
+      <feDropShadow dx="0" dy="5" stdDeviation="4.2" flood-color="#000000" flood-opacity=".44"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="1.4" flood-color="#f0d1a0" flood-opacity=".18"/>
+    </filter>
+    <symbol id="continuousMetalHelix" viewBox="0 -54 560 108" overflow="visible">
+      <path class="strand shadow-a" d="M0 0 C46 -33 94 -33 140 0 C186 33 234 33 280 0 C326 -33 374 -33 420 0 C466 33 514 33 560 0"/>
+      <path class="strand shadow-b" d="M0 0 C46 33 94 33 140 0 C186 -33 234 -33 280 0 C326 33 374 33 420 0 C466 -33 514 -33 560 0"/>
+      <path class="strand steel" d="M0 0 C46 -33 94 -33 140 0 C186 33 234 33 280 0 C326 -33 374 -33 420 0 C466 33 514 33 560 0"/>
+      <path class="strand gold" d="M0 0 C46 33 94 33 140 0 C186 -33 234 -33 280 0 C326 33 374 33 420 0 C466 -33 514 -33 560 0"/>
+      <path class="crest crest-a" d="M0 0 C46 -33 94 -33 140 0 C186 33 234 33 280 0 C326 -33 374 -33 420 0 C466 33 514 33 560 0"/>
+      <path class="crest crest-b" d="M0 0 C46 33 94 33 140 0 C186 -33 234 -33 280 0 C326 33 374 33 420 0 C466 -33 514 -33 560 0"/>
       <g class="rungs">
         <line x1="70" y1="-26" x2="70" y2="26"/>
         <line x1="210" y1="26" x2="210" y2="-26"/>
         <line x1="350" y1="-26" x2="350" y2="26"/>
         <line x1="490" y1="26" x2="490" y2="-26"/>
       </g>
-    </g>
+    </symbol>
   </defs>
 
   <style>
@@ -60,6 +64,10 @@
       stroke-linecap: round;
       stroke-linejoin: round;
       vector-effect: non-scaling-stroke;
+    }
+
+    .strand {
+      filter: url(#metalDepth);
     }
 
     .shadow-a,
@@ -138,29 +146,29 @@
     }
 
     @keyframes flow-right {
-      from { transform: translateX(-560px); }
+      from { transform: translateX(-520px); }
       to { transform: translateX(0); }
     }
 
     @keyframes stream-a {
-      0%, 100% { transform: translate(-600px, 340px) rotate(-7deg); }
-      43% { transform: translate(-582px, 327px) rotate(-3deg); }
-      72% { transform: translate(-612px, 350px) rotate(-10deg); }
+      0%, 100% { transform: translate(0, 0) rotate(-7deg); }
+      43% { transform: translate(18px, -13px) rotate(-3deg); }
+      72% { transform: translate(-12px, 10px) rotate(-10deg); }
     }
 
     @keyframes stream-b {
-      0%, 100% { transform: translate(-650px, 500px) rotate(8deg) scale(1.16); }
-      50% { transform: translate(-682px, 517px) rotate(13deg) scale(1.16); }
+      0%, 100% { transform: translate(0, 0) rotate(8deg); }
+      50% { transform: translate(-32px, 17px) rotate(13deg); }
     }
 
     @keyframes stream-c {
-      0%, 100% { transform: translate(-540px, 635px) rotate(-15deg) scale(.86); }
-      50% { transform: translate(-514px, 652px) rotate(-21deg) scale(.86); }
+      0%, 100% { transform: translate(0, 0) rotate(-15deg); }
+      50% { transform: translate(26px, 17px) rotate(-21deg); }
     }
 
     @keyframes stream-d {
-      0%, 100% { transform: translate(-700px, 218px) rotate(4deg) scale(.72); }
-      50% { transform: translate(-721px, 207px) rotate(9deg) scale(.72); }
+      0%, 100% { transform: translate(0, 0) rotate(4deg); }
+      50% { transform: translate(-21px, -11px) rotate(9deg); }
     }
 
     @keyframes steel-roll {
@@ -232,25 +240,25 @@
 
   <g class="stream stream-a" transform="translate(-600 340) rotate(-7)">
     <g class="flow flow-right fast">
-      <use href="#continuousMetalHelix"/>
+      <use href="#continuousMetalHelix" x="0"/><use href="#continuousMetalHelix" x="520"/><use href="#continuousMetalHelix" x="1040"/><use href="#continuousMetalHelix" x="1560"/><use href="#continuousMetalHelix" x="2080"/><use href="#continuousMetalHelix" x="2600"/>
     </g>
   </g>
 
   <g class="stream stream-b" transform="translate(-650 500) rotate(8) scale(1.16)">
     <g class="flow flow-right">
-      <use href="#continuousMetalHelix"/>
+      <use href="#continuousMetalHelix" x="0"/><use href="#continuousMetalHelix" x="520"/><use href="#continuousMetalHelix" x="1040"/><use href="#continuousMetalHelix" x="1560"/><use href="#continuousMetalHelix" x="2080"/><use href="#continuousMetalHelix" x="2600"/>
     </g>
   </g>
 
   <g class="stream stream-c" transform="translate(-540 635) rotate(-15) scale(.86)">
     <g class="flow flow-right slow">
-      <use href="#continuousMetalHelix"/>
+      <use href="#continuousMetalHelix" x="0"/><use href="#continuousMetalHelix" x="520"/><use href="#continuousMetalHelix" x="1040"/><use href="#continuousMetalHelix" x="1560"/><use href="#continuousMetalHelix" x="2080"/><use href="#continuousMetalHelix" x="2600"/>
     </g>
   </g>
 
   <g class="stream stream-d" transform="translate(-700 218) rotate(4) scale(.72)">
     <g class="flow flow-right slow">
-      <use href="#continuousMetalHelix"/>
+      <use href="#continuousMetalHelix" x="0"/><use href="#continuousMetalHelix" x="520"/><use href="#continuousMetalHelix" x="1040"/><use href="#continuousMetalHelix" x="1560"/><use href="#continuousMetalHelix" x="2080"/><use href="#continuousMetalHelix" x="2600"/>
     </g>
   </g>
 </svg>
