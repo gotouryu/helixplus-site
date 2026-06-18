@@ -397,17 +397,23 @@ h3 {
   display: grid;
   place-items: center;
   padding: clamp(12px, 2vw, 28px);
-  overflow: hidden;
+  overflow: visible;
+  isolation: isolate;
 }
 
 .brand-stage::before {
   content: "";
   position: absolute;
-  inset: 6% 4% 8%;
-  border: 1px solid rgba(236, 208, 168, 0.2);
+  left: 50%;
+  top: 52%;
+  width: min(96%, 720px);
+  height: min(92%, 700px);
+  z-index: 1;
   background:
-    radial-gradient(ellipse at 50% 48%, rgba(255, 255, 255, 0.13) 0%, rgba(236, 208, 168, 0.1) 24%, rgba(255, 255, 255, 0.045) 42%, transparent 68%);
-  transform: rotate(14deg);
+    radial-gradient(ellipse at 50% 50%, rgba(7, 8, 10, 0.94) 0%, rgba(10, 11, 13, 0.84) 34%, rgba(28, 22, 16, 0.48) 50%, rgba(236, 208, 168, 0.06) 61%, transparent 73%),
+    radial-gradient(ellipse at 52% 48%, rgba(236, 208, 168, 0.18) 0%, rgba(236, 208, 168, 0.06) 34%, transparent 64%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
 }
 
 .brand-stage::after {
@@ -420,11 +426,12 @@ h3 {
   background:
     linear-gradient(180deg, transparent 0%, rgba(236, 208, 168, 0.5) 28%, rgba(255, 255, 255, 0.16) 52%, rgba(236, 208, 168, 0.42) 76%, transparent 100%);
   transform: rotate(24deg);
+  z-index: 0;
 }
 
 .hero-mark {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   width: min(45vw, 610px);
   min-width: 360px;
   transform: translateY(-3%);
@@ -455,13 +462,7 @@ h3 {
 }
 
 .stage-statement {
-  position: absolute;
-  z-index: 4;
-  right: 0;
-  bottom: 12%;
-  max-width: 390px;
-  padding: 0 0 0 24px;
-  border-left: 1px solid rgba(236, 208, 168, 0.7);
+  display: none;
 }
 
 .stage-statement span {
