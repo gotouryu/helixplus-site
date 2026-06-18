@@ -8,7 +8,7 @@
       <stop offset=".58" stop-color="#fff9ef" stop-opacity=".9"/>
       <stop offset=".76" stop-color="#755337" stop-opacity=".56"/>
       <stop offset="1" stop-color="#f7f8fa" stop-opacity=".24"/>
-      <animateTransform attributeName="gradientTransform" type="translate" values="-180 0;180 0;-180 0" dur="6.4s" repeatCount="indefinite"/>
+      <animateTransform attributeName="gradientTransform" type="translate" from="0 0" to="560 0" dur="8.8s" repeatCount="indefinite"/>
     </linearGradient>
     <linearGradient id="steelSkin" x1="0" y1="24" x2="560" y2="-24" gradientUnits="userSpaceOnUse" spreadMethod="repeat">
       <stop stop-color="#fbfcff" stop-opacity=".28"/>
@@ -17,7 +17,7 @@
       <stop offset=".54" stop-color="#4a5059" stop-opacity=".68"/>
       <stop offset=".73" stop-color="#f1d0a0" stop-opacity=".5"/>
       <stop offset="1" stop-color="#111319" stop-opacity=".34"/>
-      <animateTransform attributeName="gradientTransform" type="translate" values="160 0;-160 0;160 0" dur="6.4s" repeatCount="indefinite"/>
+      <animateTransform attributeName="gradientTransform" type="translate" from="280 0" to="840 0" dur="8.8s" repeatCount="indefinite"/>
     </linearGradient>
     <linearGradient id="crestLight" x1="0" y1="0" x2="560" y2="0" gradientUnits="userSpaceOnUse" spreadMethod="repeat">
       <stop stop-color="#ffffff" stop-opacity="0"/>
@@ -25,7 +25,7 @@
       <stop offset=".43" stop-color="#fff1d2" stop-opacity=".48"/>
       <stop offset=".68" stop-color="#ffffff" stop-opacity=".72"/>
       <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
-      <animateTransform attributeName="gradientTransform" type="translate" values="-130 0;130 0;-130 0" dur="6.4s" repeatCount="indefinite"/>
+      <animateTransform attributeName="gradientTransform" type="translate" from="140 0" to="700 0" dur="8.8s" repeatCount="indefinite"/>
     </linearGradient>
     <filter id="metalDepth" x="-8%" y="-180%" width="116%" height="460%">
       <feDropShadow dx="0" dy="5" stdDeviation="4.2" flood-color="#000000" flood-opacity=".44"/>
@@ -141,6 +141,11 @@
       animation: stream-f 38s ease-in-out infinite;
     }
 
+    .stream-g {
+      opacity: .28;
+      animation: stream-g 31s linear infinite;
+    }
+
     @keyframes flow-right {
       from { transform: translateX(-560px); }
       to { transform: translateX(0); }
@@ -179,32 +184,44 @@
       72% { transform: translate(-790px, 562px) rotate(18deg) scale(.9, .46); }
     }
 
+    @keyframes stream-g {
+      0% { transform: translate(-690px, 465px) rotate(-12deg) scale(.82, .48); }
+      25% { transform: translate(-660px, 448px) rotate(-4deg) scale(.9, .78); }
+      50% { transform: translate(-632px, 470px) rotate(4deg) scale(.96, 1.02); }
+      75% { transform: translate(-662px, 492px) rotate(12deg) scale(.9, .78); }
+      100% { transform: translate(-690px, 465px) rotate(20deg) scale(.82, .48); }
+    }
+
     @keyframes steel-roll {
-      0%, 100% { stroke-width: 9.4; stroke-opacity: .8; transform: translateY(0) scaleY(1); }
+      0% { stroke-width: 9.4; stroke-opacity: .8; transform: translateY(0) scaleY(1); }
       25% { stroke-width: 4.2; stroke-opacity: .28; transform: translateY(1px) scaleY(.86); }
-      50% { stroke-width: 8.6; stroke-opacity: .68; transform: translateY(0) scaleY(.97); }
-      75% { stroke-width: 3.7; stroke-opacity: .2; transform: translateY(-1px) scaleY(.8); }
+      50% { stroke-width: 3.7; stroke-opacity: .2; transform: translateY(-1px) scaleY(.8); }
+      75% { stroke-width: 8.6; stroke-opacity: .68; transform: translateY(0) scaleY(.97); }
+      100% { stroke-width: 9.4; stroke-opacity: .8; transform: translateY(0) scaleY(1); }
     }
 
     @keyframes gold-roll {
-      0%, 100% { stroke-width: 4.1; stroke-opacity: .3; transform: translateY(1px) scaleY(.84); }
+      0% { stroke-width: 4.1; stroke-opacity: .3; transform: translateY(1px) scaleY(.84); }
       25% { stroke-width: 9.8; stroke-opacity: .88; transform: translateY(0) scaleY(1); }
-      50% { stroke-width: 3.6; stroke-opacity: .22; transform: translateY(-1px) scaleY(.78); }
-      75% { stroke-width: 8; stroke-opacity: .66; transform: translateY(0) scaleY(.94); }
+      50% { stroke-width: 8; stroke-opacity: .66; transform: translateY(0) scaleY(.94); }
+      75% { stroke-width: 3.6; stroke-opacity: .22; transform: translateY(-1px) scaleY(.78); }
+      100% { stroke-width: 4.1; stroke-opacity: .3; transform: translateY(1px) scaleY(.84); }
     }
 
     @keyframes shadow-a-roll {
-      0%, 100% { stroke-width: 10.8; stroke-opacity: .36; transform: translateY(4px) scaleY(1.04); }
+      0% { stroke-width: 10.8; stroke-opacity: .36; transform: translateY(4px) scaleY(1.04); }
       25% { stroke-width: 5.4; stroke-opacity: .14; transform: translateY(1px) scaleY(.88); }
-      50% { stroke-width: 9.4; stroke-opacity: .3; transform: translateY(3px) scaleY(.98); }
-      75% { stroke-width: 4.8; stroke-opacity: .1; transform: translateY(0) scaleY(.82); }
+      50% { stroke-width: 4.8; stroke-opacity: .1; transform: translateY(0) scaleY(.82); }
+      75% { stroke-width: 9.4; stroke-opacity: .3; transform: translateY(3px) scaleY(.98); }
+      100% { stroke-width: 10.8; stroke-opacity: .36; transform: translateY(4px) scaleY(1.04); }
     }
 
     @keyframes shadow-b-roll {
-      0%, 100% { stroke-width: 5; stroke-opacity: .12; transform: translateY(0) scaleY(.86); }
+      0% { stroke-width: 5; stroke-opacity: .12; transform: translateY(0) scaleY(.86); }
       25% { stroke-width: 10.8; stroke-opacity: .36; transform: translateY(4px) scaleY(1.04); }
-      50% { stroke-width: 4.6; stroke-opacity: .1; transform: translateY(0) scaleY(.8); }
-      75% { stroke-width: 8.6; stroke-opacity: .28; transform: translateY(3px) scaleY(.96); }
+      50% { stroke-width: 8.6; stroke-opacity: .28; transform: translateY(3px) scaleY(.96); }
+      75% { stroke-width: 4.6; stroke-opacity: .1; transform: translateY(0) scaleY(.8); }
+      100% { stroke-width: 5; stroke-opacity: .12; transform: translateY(0) scaleY(.86); }
     }
 
     @keyframes crest-a-roll {
@@ -229,6 +246,7 @@
       .stream-d,
       .stream-e,
       .stream-f,
+      .stream-g,
       .steel,
       .gold,
       .shadow-a,
@@ -272,6 +290,12 @@
 
   <g class="stream stream-f" transform="translate(-760 580) rotate(12) scale(.94 .54)">
     <g class="flow flow-right slow">
+      <use href="#continuousMetalHelix"/>
+    </g>
+  </g>
+
+  <g class="stream stream-g" transform="translate(-690 465) rotate(-12) scale(.82 .48)">
+    <g class="flow flow-right fast">
       <use href="#continuousMetalHelix"/>
     </g>
   </g>
