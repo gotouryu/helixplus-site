@@ -395,10 +395,9 @@ h3 {
 .brand-stage {
   min-height: clamp(500px, 68vh, 720px);
   display: grid;
-  grid-template-rows: minmax(0, 1fr) auto;
   place-items: center;
   padding: clamp(12px, 2vw, 28px);
-  overflow: visible;
+  overflow: hidden;
 }
 
 .brand-stage::before {
@@ -442,19 +441,18 @@ h3 {
 }
 
 .stage-statement {
-  position: relative;
+  position: absolute;
   z-index: 4;
-  justify-self: end;
-  right: auto;
-  bottom: auto;
-  max-width: 390px;
+  right: 2%;
+  bottom: 20%;
+  max-width: 420px;
   padding: 0 0 0 24px;
   border-left: 1px solid rgba(236, 208, 168, 0.7);
 }
 
 .stage-statement span {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   color: var(--gold-soft);
   font-size: 12px;
   font-weight: 900;
@@ -462,8 +460,8 @@ h3 {
 
 .stage-statement strong {
   color: #fff;
-  font-size: clamp(17px, 1.7vw, 22px);
-  line-height: 1.28;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.35;
 }
 
 .section {
