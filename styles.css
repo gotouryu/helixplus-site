@@ -212,6 +212,26 @@ h3 {
   margin-top: 30px;
 }
 
+.hero-cta-row {
+  display: grid;
+  grid-template-columns: minmax(340px, max-content) minmax(360px, 500px);
+  align-items: start;
+  gap: clamp(18px, 2.6vw, 36px);
+  margin-top: 8px;
+  transform: translateY(-14px);
+}
+
+.hero-cta-row .hero-actions {
+  align-content: start;
+  align-items: flex-start;
+  margin-top: 0;
+}
+
+.hero-cta-row .button {
+  min-height: 42px;
+  padding: 8px 17px;
+}
+
 .hero {
   position: relative;
   min-height: calc(100vh - 67px);
@@ -253,15 +273,36 @@ h3 {
   position: absolute;
   z-index: 0;
   left: var(--page);
-  bottom: -0.14em;
+  right: var(--page);
+  bottom: clamp(112px, 15vh, 146px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.02em;
   margin: 0;
-  color: rgba(255, 255, 255, 0.035);
+  color: rgba(255, 255, 255, 0.043);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(78px, 17vw, 252px);
+  font-size: clamp(52px, 8.4vw, 116px);
   font-weight: 900;
-  line-height: 0.8;
+  line-height: 1;
   white-space: nowrap;
   pointer-events: none;
+  perspective: 900px;
+}
+
+.hero-signature span {
+  display: inline-block;
+  transform-origin: 50% 52%;
+  animation: signature-letter-spin 8.4s linear infinite;
+  animation-delay: calc(var(--i) * 0.18s);
+  will-change: transform, opacity;
+}
+
+@keyframes signature-letter-spin {
+  0% { opacity: .45; transform: rotateY(0deg) translateZ(0); }
+  10% { opacity: .78; transform: rotateY(110deg) translateZ(12px); }
+  20% { opacity: .5; transform: rotateY(220deg) translateZ(0); }
+  30%, 100% { opacity: .45; transform: rotateY(360deg) translateZ(0); }
 }
 
 .hero-copy {
@@ -296,16 +337,16 @@ h3 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1px;
-  margin-top: clamp(28px, 4vw, 46px);
-  max-width: 830px;
+  margin-top: 0;
+  max-width: 500px;
   border-top: 1px solid rgba(236, 208, 168, 0.34);
   border-bottom: 1px solid rgba(255, 255, 255, 0.11);
   background: transparent;
 }
 
 .hero-proof div {
-  min-height: 94px;
-  padding: 15px 16px 14px;
+  min-height: 44px;
+  padding: 6px 10px 6px;
   border-right: 1px solid rgba(255, 255, 255, 0.11);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), transparent);
 }
@@ -320,21 +361,21 @@ h3 {
 .case-label {
   display: block;
   color: var(--gold-soft);
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 900;
 }
 
 .hero-proof strong {
   display: block;
-  margin-top: 4px;
+  margin-top: 1px;
   color: #fff;
-  font-size: clamp(19px, 1.8vw, 25px);
+  font-size: clamp(14px, 1.05vw, 17px);
   line-height: 1.18;
 }
 
 .hero-proof small {
-  display: block;
-  margin-top: 8px;
+  display: none;
+  margin-top: 0;
   color: rgba(255, 255, 255, 0.62);
   font-size: 12px;
   line-height: 1.45;
@@ -1180,6 +1221,15 @@ h3 {
   .visual-board,
   .consult-map {
     grid-template-columns: 1fr;
+  }
+
+  .hero-cta-row {
+    grid-template-columns: 1fr;
+    transform: none;
+  }
+
+  .hero-cta-row .hero-proof {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .consult-map {
