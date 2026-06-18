@@ -213,12 +213,11 @@ h3 {
 }
 
 .hero-cta-row {
-  display: grid;
-  grid-template-columns: minmax(340px, max-content) minmax(360px, 500px);
-  align-items: start;
-  gap: clamp(18px, 2.6vw, 36px);
-  margin-top: 8px;
-  transform: translateY(-14px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  margin-top: 14px;
 }
 
 .hero-cta-row .hero-actions {
@@ -350,8 +349,9 @@ h3 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1px;
+  width: min(100%, 560px);
   margin-top: 0;
-  max-width: 500px;
+  max-width: 560px;
   border-top: 1px solid rgba(236, 208, 168, 0.34);
   border-bottom: 1px solid rgba(255, 255, 255, 0.11);
   background: transparent;
@@ -1141,6 +1141,39 @@ h3 {
   color: #fff;
   font-family: Georgia, "Times New Roman", serif;
   font-weight: 900;
+}
+
+@media (min-width: 1041px) and (max-height: 760px) {
+  .hero {
+    padding-top: clamp(34px, 4.6vw, 54px);
+    padding-bottom: 34px;
+  }
+
+  .hero-kicker {
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    margin-bottom: 14px;
+    font-size: clamp(48px, 6.4vw, 94px);
+    line-height: 0.9;
+  }
+
+  .hero .lead {
+    max-width: 690px;
+    font-size: 17px;
+    line-height: 1.58;
+  }
+
+  .hero-cta-row {
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .hero-proof div {
+    min-height: 40px;
+    padding-block: 5px;
+  }
 }
 
 @media (max-width: 1040px) {
