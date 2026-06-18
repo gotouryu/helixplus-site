@@ -297,9 +297,18 @@ h3 {
   transform-style: preserve-3d;
   backface-visibility: visible;
   animation: signature-letter-spin 3.2s linear infinite;
-  animation-delay: calc(var(--i) * -0.26s);
   will-change: transform, opacity;
 }
+
+.hero-signature span:nth-child(1) { animation-delay: 0s; }
+.hero-signature span:nth-child(2) { animation-delay: -0.26s; }
+.hero-signature span:nth-child(3) { animation-delay: -0.52s; }
+.hero-signature span:nth-child(4) { animation-delay: -0.78s; }
+.hero-signature span:nth-child(5) { animation-delay: -1.04s; }
+.hero-signature span:nth-child(6) { animation-delay: -1.3s; }
+.hero-signature span:nth-child(7) { animation-delay: -1.56s; }
+.hero-signature span:nth-child(8) { animation-delay: -1.82s; }
+.hero-signature span:nth-child(9) { animation-delay: -2.08s; }
 
 @keyframes signature-letter-spin {
   0% { opacity: .42; transform: rotateY(0deg) translateZ(0) scaleX(1); }
