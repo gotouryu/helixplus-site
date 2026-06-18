@@ -1,189 +1,183 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" fill="none">
   <defs>
-    <linearGradient id="ribbonGold" x1="0" y1="-28" x2="560" y2="28" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#111318" stop-opacity=".28"/>
-      <stop offset=".16" stop-color="#6f737b" stop-opacity=".48"/>
-      <stop offset=".31" stop-color="#fff1db" stop-opacity=".86"/>
-      <stop offset=".48" stop-color="#b9864d" stop-opacity=".72"/>
-      <stop offset=".67" stop-color="#fff8ed" stop-opacity=".78"/>
-      <stop offset="1" stop-color="#ffffff" stop-opacity=".18"/>
+    <linearGradient id="goldPlate" x1="0" y1="-42" x2="620" y2="42" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#14161b"/>
+      <stop offset=".16" stop-color="#575a60"/>
+      <stop offset=".31" stop-color="#fff0d7"/>
+      <stop offset=".46" stop-color="#bd884b"/>
+      <stop offset=".62" stop-color="#fff7e8"/>
+      <stop offset=".82" stop-color="#745338"/>
+      <stop offset="1" stop-color="#f6f7f8"/>
     </linearGradient>
-    <linearGradient id="ribbonSteel" x1="0" y1="28" x2="560" y2="-28" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#ffffff" stop-opacity=".24"/>
-      <stop offset=".2" stop-color="#15181d" stop-opacity=".72"/>
-      <stop offset=".43" stop-color="#f8fbff" stop-opacity=".82"/>
-      <stop offset=".63" stop-color="#3b4048" stop-opacity=".62"/>
-      <stop offset=".82" stop-color="#f2d2a0" stop-opacity=".42"/>
-      <stop offset="1" stop-color="#ffffff" stop-opacity=".18"/>
+    <linearGradient id="steelPlate" x1="0" y1="42" x2="620" y2="-42" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f9fafb"/>
+      <stop offset=".16" stop-color="#22262d"/>
+      <stop offset=".36" stop-color="#f3f5f7"/>
+      <stop offset=".56" stop-color="#595f68"/>
+      <stop offset=".76" stop-color="#f1d0a0"/>
+      <stop offset="1" stop-color="#171a20"/>
     </linearGradient>
-    <linearGradient id="ribbonHighlight" x1="0" y1="-18" x2="560" y2="18" gradientUnits="userSpaceOnUse">
+    <linearGradient id="edgeLight" x1="0" y1="0" x2="620" y2="0" gradientUnits="userSpaceOnUse">
       <stop stop-color="#ffffff" stop-opacity="0"/>
-      <stop offset=".3" stop-color="#ffffff" stop-opacity=".86"/>
-      <stop offset=".5" stop-color="#fff1d2" stop-opacity=".52"/>
-      <stop offset=".72" stop-color="#ffffff" stop-opacity=".72"/>
+      <stop offset=".25" stop-color="#ffffff" stop-opacity=".86"/>
+      <stop offset=".48" stop-color="#fff1d2" stop-opacity=".5"/>
+      <stop offset=".72" stop-color="#ffffff" stop-opacity=".74"/>
       <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
-    <filter id="metalGlow" x="-8%" y="-180%" width="116%" height="460%">
-      <feGaussianBlur stdDeviation="3.4" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
+    <filter id="hardShadow" x="-12%" y="-160%" width="124%" height="420%">
+      <feDropShadow dx="0" dy="9" stdDeviation="6" flood-color="#000000" flood-opacity=".48"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="2.2" flood-color="#f1d0a0" flood-opacity=".18"/>
     </filter>
-    <symbol id="metalHelixLine" viewBox="0 -52 560 104" overflow="visible">
-      <path class="ribbon shadow" d="M0 0 C46 -34 94 -34 140 0 C186 34 234 34 280 0 C326 -34 374 -34 420 0 C466 34 514 34 560 0"/>
-      <path class="ribbon shadow alt" d="M0 0 C46 34 94 34 140 0 C186 -34 234 -34 280 0 C326 34 374 34 420 0 C466 -34 514 -34 560 0"/>
-      <path class="ribbon steel" d="M0 0 C46 -34 94 -34 140 0 C186 34 234 34 280 0 C326 -34 374 -34 420 0 C466 34 514 34 560 0"/>
-      <path class="ribbon gold" d="M0 0 C46 34 94 34 140 0 C186 -34 234 -34 280 0 C326 34 374 34 420 0 C466 -34 514 -34 560 0"/>
-      <path class="ribbon highlight" d="M0 0 C46 -34 94 -34 140 0 C186 34 234 34 280 0 C326 -34 374 -34 420 0 C466 34 514 34 560 0"/>
-      <path class="ribbon highlight alt" d="M0 0 C46 34 94 34 140 0 C186 -34 234 -34 280 0 C326 34 374 34 420 0 C466 -34 514 -34 560 0"/>
-      <g class="bars">
-        <line x1="70" y1="-29" x2="70" y2="29"/>
-        <line x1="210" y1="29" x2="210" y2="-29"/>
-        <line x1="350" y1="-29" x2="350" y2="29"/>
-        <line x1="490" y1="29" x2="490" y2="-29"/>
+    <symbol id="metalRibbonHelix" viewBox="0 -76 620 152" overflow="visible">
+      <path class="plate plate-shadow" d="M-6 10 C48 -40 92 -40 146 10 C197 57 244 57 294 10 C348 -40 392 -40 446 10 C497 57 544 57 626 2 L626 32 C552 86 493 86 434 31 C392 -8 348 -8 306 31 C247 86 190 86 134 31 C92 -8 48 -8 -6 40 Z"/>
+      <path class="plate steel-plate" d="M0 0 C48 -42 92 -42 140 0 C190 44 238 44 286 0 C334 -42 378 -42 426 0 C476 44 524 44 620 0 L620 25 C522 78 468 78 414 25 C378 -10 334 -10 298 25 C244 78 184 78 128 25 C92 -10 48 -10 0 25 Z"/>
+      <path class="plate gold-plate" d="M0 0 C48 42 92 42 140 0 C190 -44 238 -44 286 0 C334 42 378 42 426 0 C476 -44 524 -44 620 0 L620 -25 C522 -78 468 -78 414 -25 C378 10 334 10 298 -25 C244 -78 184 -78 128 -25 C92 10 48 10 0 -25 Z"/>
+      <path class="edge edge-a" d="M6 -2 C52 -38 90 -38 136 -2 C190 38 238 38 286 -2 C334 -38 374 -38 420 -2 C474 38 522 38 614 -2"/>
+      <path class="edge edge-b" d="M6 2 C52 38 90 38 136 2 C190 -38 238 -38 286 2 C334 38 374 38 420 2 C474 -38 522 -38 614 2"/>
+      <g class="rungs">
+        <path d="M72 -28 L72 28"/>
+        <path d="M218 28 L218 -28"/>
+        <path d="M364 -28 L364 28"/>
+        <path d="M510 28 L510 -28"/>
       </g>
     </symbol>
   </defs>
 
   <style>
     .stream,
-    .flow {
+    .flow,
+    .plate,
+    .edge,
+    .rungs {
       transform-box: fill-box;
       transform-origin: center;
     }
 
-    .ribbon,
-    .bars line {
+    .plate {
+      filter: url(#hardShadow);
+      fill-rule: evenodd;
+    }
+
+    .plate-shadow {
+      fill: rgba(0, 0, 0, .42);
+      animation: shadow-roll 6.6s linear infinite;
+    }
+
+    .steel-plate {
+      fill: url(#steelPlate);
+      animation: steel-roll 6.6s linear infinite;
+    }
+
+    .gold-plate {
+      fill: url(#goldPlate);
+      animation: gold-roll 6.6s linear infinite;
+    }
+
+    .edge {
+      fill: none;
+      stroke: url(#edgeLight);
       stroke-linecap: round;
       stroke-linejoin: round;
-      vector-effect: non-scaling-stroke;
+      animation: edge-roll 6.6s linear infinite;
     }
 
-    .ribbon {
+    .rungs {
       fill: none;
-      filter: url(#metalGlow);
-    }
-
-    .shadow {
-      stroke: rgba(0, 0, 0, .46);
-      stroke-width: 11;
-      animation: shadow-spin 6.8s linear infinite;
-    }
-
-    .gold {
-      stroke: url(#ribbonGold);
-      animation: gold-spin 6.8s linear infinite;
-    }
-
-    .steel {
-      stroke: url(#ribbonSteel);
-      animation: steel-spin 6.8s linear infinite;
-    }
-
-    .highlight {
-      stroke: url(#ribbonHighlight);
-      stroke-width: 1.45;
-      animation: highlight-spin 6.8s linear infinite;
-    }
-
-    .bars {
-      stroke: rgba(236, 208, 168, .24);
-      stroke-width: 1.05;
-      animation: bar-spin 6.8s linear infinite;
+      stroke: rgba(246, 221, 184, .42);
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      animation: rung-roll 6.6s linear infinite;
     }
 
     .flow-right {
-      animation: flow-right 34s linear infinite;
+      animation: flow-right 36s linear infinite;
     }
 
     .flow-right.slow {
-      animation-duration: 46s;
+      animation-duration: 50s;
     }
 
     .flow-right.fast {
-      animation-duration: 28s;
+      animation-duration: 30s;
     }
 
     .stream-a {
-      opacity: .64;
+      opacity: .58;
       animation: stream-a 19s ease-in-out infinite;
     }
 
     .stream-b {
-      opacity: .44;
-      animation: stream-b 23s ease-in-out infinite;
+      opacity: .4;
+      animation: stream-b 24s ease-in-out infinite;
     }
 
     .stream-c {
-      opacity: .34;
+      opacity: .32;
       animation: stream-c 27s ease-in-out infinite;
     }
 
     .stream-d {
-      opacity: .26;
-      animation: stream-d 31s ease-in-out infinite;
+      opacity: .24;
+      animation: stream-d 32s ease-in-out infinite;
     }
 
     @keyframes flow-right {
-      from { transform: translateX(-560px); }
+      from { transform: translateX(-620px); }
       to { transform: translateX(0); }
     }
 
     @keyframes stream-a {
       0%, 100% { transform: translate(0, 0) rotate(-7deg); }
-      44% { transform: translate(20px, -14px) rotate(-3deg); }
-      72% { transform: translate(-12px, 10px) rotate(-10deg); }
+      45% { transform: translate(18px, -12px) rotate(-3deg); }
+      72% { transform: translate(-10px, 9px) rotate(-10deg); }
     }
 
     @keyframes stream-b {
       0%, 100% { transform: translate(0, 0) rotate(8deg); }
-      50% { transform: translate(-34px, 18px) rotate(13deg); }
+      50% { transform: translate(-32px, 16px) rotate(13deg); }
     }
 
     @keyframes stream-c {
       0%, 100% { transform: translate(0, 0) rotate(-15deg); }
-      50% { transform: translate(28px, 18px) rotate(-21deg); }
+      50% { transform: translate(26px, 16px) rotate(-21deg); }
     }
 
     @keyframes stream-d {
       0%, 100% { transform: translate(0, 0) rotate(4deg); }
-      50% { transform: translate(-22px, -12px) rotate(9deg); }
+      50% { transform: translate(-20px, -10px) rotate(9deg); }
     }
 
-    @keyframes shadow-spin {
-      0%, 100% { stroke-width: 10; stroke-opacity: .46; }
-      25% { stroke-width: 5; stroke-opacity: .22; }
-      50% { stroke-width: 9; stroke-opacity: .38; }
-      75% { stroke-width: 4; stroke-opacity: .18; }
+    @keyframes steel-roll {
+      0%, 100% { opacity: .88; transform: scaleY(1); }
+      24% { opacity: .22; transform: scaleY(.78); }
+      50% { opacity: .78; transform: scaleY(.94); }
+      76% { opacity: .2; transform: scaleY(.72); }
     }
 
-    @keyframes gold-spin {
-      0%, 100% { stroke-width: 3.2; stroke-opacity: .34; }
-      25% { stroke-width: 10.5; stroke-opacity: .84; }
-      50% { stroke-width: 2.4; stroke-opacity: .24; }
-      75% { stroke-width: 7.2; stroke-opacity: .58; }
+    @keyframes gold-roll {
+      0%, 100% { opacity: .22; transform: scaleY(.78); }
+      24% { opacity: .92; transform: scaleY(1.02); }
+      50% { opacity: .2; transform: scaleY(.72); }
+      76% { opacity: .74; transform: scaleY(.94); }
     }
 
-    @keyframes steel-spin {
-      0%, 100% { stroke-width: 9.4; stroke-opacity: .78; }
-      25% { stroke-width: 2.2; stroke-opacity: .18; }
-      50% { stroke-width: 8; stroke-opacity: .62; }
-      75% { stroke-width: 1.9; stroke-opacity: .14; }
+    @keyframes shadow-roll {
+      0%, 100% { opacity: .44; transform: translateY(5px) scaleY(1.04); }
+      50% { opacity: .26; transform: translateY(2px) scaleY(.9); }
     }
 
-    @keyframes highlight-spin {
-      0%, 100% { stroke-width: 1.1; stroke-opacity: .2; }
-      25% { stroke-width: 2.4; stroke-opacity: .74; }
-      50% { stroke-width: .9; stroke-opacity: .16; }
-      75% { stroke-width: 1.9; stroke-opacity: .58; }
+    @keyframes edge-roll {
+      0%, 100% { stroke-width: 1.4; opacity: .28; }
+      24% { stroke-width: 3.4; opacity: .86; }
+      50% { stroke-width: 1.1; opacity: .2; }
+      76% { stroke-width: 2.6; opacity: .64; }
     }
 
-    @keyframes bar-spin {
-      0%, 100% { opacity: .12; }
-      25% { opacity: .34; }
-      50% { opacity: .1; }
-      75% { opacity: .24; }
+    @keyframes rung-roll {
+      0%, 100% { opacity: .18; stroke-width: 1.6; }
+      24% { opacity: .5; stroke-width: 2.6; }
+      50% { opacity: .14; stroke-width: 1.4; }
+      76% { opacity: .36; stroke-width: 2.1; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -192,37 +186,37 @@
       .stream-b,
       .stream-c,
       .stream-d,
-      .gold,
-      .steel,
-      .shadow,
-      .highlight,
-      .bars {
+      .steel-plate,
+      .gold-plate,
+      .plate-shadow,
+      .edge,
+      .rungs {
         animation: none;
       }
     }
   </style>
 
-  <g class="stream stream-a" transform="translate(-600 340) rotate(-7)">
+  <g class="stream stream-a" transform="translate(-640 336) rotate(-7)">
     <g class="flow flow-right fast">
-      <use href="#metalHelixLine" x="0"/><use href="#metalHelixLine" x="560"/><use href="#metalHelixLine" x="1120"/><use href="#metalHelixLine" x="1680"/><use href="#metalHelixLine" x="2240"/>
+      <use href="#metalRibbonHelix" x="0"/><use href="#metalRibbonHelix" x="620"/><use href="#metalRibbonHelix" x="1240"/><use href="#metalRibbonHelix" x="1860"/><use href="#metalRibbonHelix" x="2480"/>
     </g>
   </g>
 
-  <g class="stream stream-b" transform="translate(-650 500) rotate(8) scale(1.18)">
+  <g class="stream stream-b" transform="translate(-700 505) rotate(8) scale(1.14)">
     <g class="flow flow-right">
-      <use href="#metalHelixLine" x="0"/><use href="#metalHelixLine" x="560"/><use href="#metalHelixLine" x="1120"/><use href="#metalHelixLine" x="1680"/><use href="#metalHelixLine" x="2240"/>
+      <use href="#metalRibbonHelix" x="0"/><use href="#metalRibbonHelix" x="620"/><use href="#metalRibbonHelix" x="1240"/><use href="#metalRibbonHelix" x="1860"/><use href="#metalRibbonHelix" x="2480"/>
     </g>
   </g>
 
-  <g class="stream stream-c" transform="translate(-540 635) rotate(-15) scale(.86)">
+  <g class="stream stream-c" transform="translate(-560 642) rotate(-15) scale(.84)">
     <g class="flow flow-right slow">
-      <use href="#metalHelixLine" x="0"/><use href="#metalHelixLine" x="560"/><use href="#metalHelixLine" x="1120"/><use href="#metalHelixLine" x="1680"/><use href="#metalHelixLine" x="2240"/>
+      <use href="#metalRibbonHelix" x="0"/><use href="#metalRibbonHelix" x="620"/><use href="#metalRibbonHelix" x="1240"/><use href="#metalRibbonHelix" x="1860"/><use href="#metalRibbonHelix" x="2480"/>
     </g>
   </g>
 
-  <g class="stream stream-d" transform="translate(-700 218) rotate(4) scale(.72)">
+  <g class="stream stream-d" transform="translate(-720 220) rotate(4) scale(.7)">
     <g class="flow flow-right slow">
-      <use href="#metalHelixLine" x="0"/><use href="#metalHelixLine" x="560"/><use href="#metalHelixLine" x="1120"/><use href="#metalHelixLine" x="1680"/><use href="#metalHelixLine" x="2240"/>
+      <use href="#metalRibbonHelix" x="0"/><use href="#metalRibbonHelix" x="620"/><use href="#metalRibbonHelix" x="1240"/><use href="#metalRibbonHelix" x="1860"/><use href="#metalRibbonHelix" x="2480"/>
     </g>
   </g>
 </svg>
