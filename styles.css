@@ -399,6 +399,7 @@ h3 {
   padding: clamp(12px, 2vw, 28px);
   overflow: visible;
   isolation: isolate;
+  perspective: 1200px;
 }
 
 .brand-stage::before {
@@ -415,9 +416,32 @@ h3 {
   width: min(45vw, 610px);
   min-width: 360px;
   transform: translateY(-3%);
+  transform-origin: center center;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+  animation: hero-mark-turn 8s linear infinite;
+  will-change: transform;
   filter:
     drop-shadow(0 36px 70px rgba(0, 0, 0, 0.55))
     drop-shadow(0 0 46px rgba(236, 208, 168, 0.22));
+}
+
+@keyframes hero-mark-turn {
+  0% {
+    transform: translateY(-3%) rotateY(-34deg) scaleX(0.92);
+  }
+  25% {
+    transform: translateY(-3%) rotateY(0deg) scaleX(1);
+  }
+  50% {
+    transform: translateY(-3%) rotateY(34deg) scaleX(0.92);
+  }
+  75% {
+    transform: translateY(-3%) rotateY(0deg) scaleX(1);
+  }
+  100% {
+    transform: translateY(-3%) rotateY(-34deg) scaleX(0.92);
+  }
 }
 
 .orbit-labels {
@@ -1387,4 +1411,7 @@ h3 {
     scroll-behavior: auto;
   }
 
+  .hero-mark {
+    animation: none;
+  }
 }
