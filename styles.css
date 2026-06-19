@@ -399,7 +399,7 @@ h3 {
   padding: clamp(12px, 2vw, 28px);
   overflow: visible;
   isolation: isolate;
-  perspective: 1200px;
+  perspective: 1500px;
 }
 
 .brand-stage::before {
@@ -414,33 +414,129 @@ h3 {
   position: relative;
   z-index: 4;
   width: min(45vw, 610px);
+  aspect-ratio: 1;
   min-width: 360px;
   transform: translateY(-3%);
   transform-origin: center center;
   transform-style: preserve-3d;
-  backface-visibility: visible;
-  animation: hero-mark-turn 8s linear infinite;
+  animation: hero-mark-orbit 10s linear infinite;
   will-change: transform;
   filter:
     drop-shadow(0 36px 70px rgba(0, 0, 0, 0.55))
     drop-shadow(0 0 46px rgba(236, 208, 168, 0.22));
 }
 
-@keyframes hero-mark-turn {
+.hero-mark::before,
+.hero-mark::after {
+  content: "";
+  position: absolute;
+  inset: 8% 13% 10%;
+  z-index: 6;
+  border-radius: 48%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.hero-mark::before {
+  background:
+    linear-gradient(105deg, transparent 15%, rgba(255, 255, 255, 0.22) 36%, rgba(236, 208, 168, 0.38) 48%, transparent 64%);
+  animation: mark-metal-sheen 4.6s linear infinite;
+}
+
+.hero-mark::after {
+  content: none;
+}
+
+.mark-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+  will-change: transform, filter, opacity;
+}
+
+.mark-layer-back {
+  z-index: 1;
+  opacity: 0.22;
+  filter: blur(0.8px) brightness(0.76) saturate(0.92);
+  animation: mark-layer-back 7.6s ease-in-out infinite;
+}
+
+.mark-layer-core {
+  z-index: 3;
+  animation: mark-layer-core 7.6s ease-in-out infinite;
+}
+
+.mark-layer-front {
+  z-index: 5;
+  opacity: 0.48;
+  filter: brightness(1.18) contrast(1.08);
+  mix-blend-mode: screen;
+  animation: mark-layer-front 7.6s ease-in-out infinite;
+}
+
+@keyframes hero-mark-orbit {
   0% {
-    transform: translateY(-3%) rotateY(-34deg) scaleX(0.92);
+    transform: translateY(-3%) rotateX(4deg) rotateY(-28deg) rotateZ(-1.2deg);
   }
   25% {
-    transform: translateY(-3%) rotateY(0deg) scaleX(1);
+    transform: translateY(-3%) rotateX(-2deg) rotateY(8deg) rotateZ(0.8deg);
   }
   50% {
-    transform: translateY(-3%) rotateY(34deg) scaleX(0.92);
+    transform: translateY(-3%) rotateX(5deg) rotateY(32deg) rotateZ(1.2deg);
   }
   75% {
-    transform: translateY(-3%) rotateY(0deg) scaleX(1);
+    transform: translateY(-3%) rotateX(-3deg) rotateY(-8deg) rotateZ(-0.6deg);
   }
   100% {
-    transform: translateY(-3%) rotateY(-34deg) scaleX(0.92);
+    transform: translateY(-3%) rotateX(4deg) rotateY(-28deg) rotateZ(-1.2deg);
+  }
+}
+
+@keyframes mark-layer-back {
+  0%, 100% {
+    transform: translate3d(-18px, 8px, -72px) rotateY(18deg) scale(0.985);
+  }
+  50% {
+    transform: translate3d(18px, -6px, -72px) rotateY(-18deg) scale(1.015);
+  }
+}
+
+@keyframes mark-layer-core {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotateY(-8deg);
+  }
+  50% {
+    transform: translate3d(0, 0, 28px) rotateY(8deg);
+  }
+}
+
+@keyframes mark-layer-front {
+  0%, 100% {
+    transform: translate3d(14px, -8px, 82px) rotateY(-20deg) scale(0.985);
+  }
+  50% {
+    transform: translate3d(-14px, 8px, 82px) rotateY(20deg) scale(1.015);
+  }
+}
+
+@keyframes mark-metal-sheen {
+  0% {
+    transform: translateX(-64%) rotate(-14deg);
+    opacity: 0;
+  }
+  22% {
+    opacity: 0.42;
+  }
+  48% {
+    opacity: 0.18;
+  }
+  100% {
+    transform: translateX(68%) rotate(-14deg);
+    opacity: 0;
   }
 }
 
@@ -1411,7 +1507,10 @@ h3 {
     scroll-behavior: auto;
   }
 
-  .hero-mark {
+  .hero-mark,
+  .mark-layer,
+  .hero-mark::before,
+  .hero-mark::after {
     animation: none;
   }
 }
