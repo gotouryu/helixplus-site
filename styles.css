@@ -406,32 +406,25 @@ h3 {
   position: absolute;
   left: 50%;
   top: 52%;
-  width: min(96%, 720px);
-  height: min(92%, 700px);
+  width: min(86%, 610px);
+  height: min(92%, 690px);
   z-index: 1;
   background:
-    radial-gradient(ellipse at 50% 50%, rgba(7, 8, 10, 0.94) 0%, rgba(10, 11, 13, 0.84) 34%, rgba(28, 22, 16, 0.48) 50%, rgba(236, 208, 168, 0.06) 61%, transparent 73%),
-    radial-gradient(ellipse at 52% 48%, rgba(236, 208, 168, 0.18) 0%, rgba(236, 208, 168, 0.06) 34%, transparent 64%);
+    radial-gradient(ellipse at 50% 50%, rgba(2, 3, 5, 0.98) 0%, rgba(4, 5, 7, 0.96) 47%, rgba(5, 6, 8, 0.74) 62%, rgba(6, 7, 9, 0.32) 73%, transparent 84%),
+    radial-gradient(ellipse at 53% 51%, rgba(236, 208, 168, 0.08) 0%, rgba(236, 208, 168, 0.04) 46%, transparent 72%);
+  border-radius: 50%;
   transform: translate(-50%, -50%);
+  filter: drop-shadow(0 34px 72px rgba(0, 0, 0, 0.72));
   pointer-events: none;
 }
 
 .brand-stage::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 2%;
-  bottom: 0;
-  width: 1px;
-  background:
-    linear-gradient(180deg, transparent 0%, rgba(236, 208, 168, 0.5) 28%, rgba(255, 255, 255, 0.16) 52%, rgba(236, 208, 168, 0.42) 76%, transparent 100%);
-  transform: rotate(24deg);
-  z-index: 0;
+  content: none;
 }
 
 .hero-mark {
   position: relative;
-  z-index: 3;
+  z-index: 4;
   width: min(45vw, 610px);
   min-width: 360px;
   transform: translateY(-3%);
