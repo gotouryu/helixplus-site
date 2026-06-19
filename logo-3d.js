@@ -3,207 +3,258 @@
   if (!stage) return;
 
   const canvas = stage.querySelector(".hero-logo-canvas");
-  const source = stage.dataset.logoSrc || "./assets/helixplus-mark.png";
+  const logoUrl = stage.dataset.logoSrc || "./assets/helixplus-mark.png";
   const gl = canvas.getContext("webgl", {
     alpha: true,
     antialias: true,
     premultipliedAlpha: false
   });
-
   if (!gl) return;
 
-  const vertexShader = `
+  const meshProgram = createProgram(gl, `
     attribute vec3 aPosition;
     attribute vec3 aNormal;
-    attribute vec3 aColor;
     uniform mat4 uMatrix;
     uniform mat3 uNormalMatrix;
     varying vec3 vNormal;
-    varying vec3 vColor;
     varying vec3 vWorld;
     void main() {
       vNormal = normalize(uNormalMatrix * aNormal);
-      vColor = aColor;
       vWorld = aPosition;
       gl_Position = uMatrix * vec4(aPosition, 1.0);
     }
-  `;
-
-  const fragmentShader = `
+  `, `
     precision mediump float;
     varying vec3 vNormal;
-    varying vec3 vColor;
     varying vec3 vWorld;
     void main() {
       vec3 n = normalize(vNormal);
-      vec3 lightA = normalize(vec3(-0.45, 0.72, 0.52));
-      vec3 lightB = normalize(vec3(0.7, -0.25, 0.45));
-      float key = max(dot(n, lightA), 0.0);
-      float rim = pow(max(1.0 - abs(n.z), 0.0), 2.0);
-      float fill = max(dot(n, lightB), 0.0) * 0.34;
-      float sideDepth = pow(max(1.0 - abs(n.z), 0.0), 0.72);
-      float metalBand = 0.5 + 0.5 * sin((vWorld.y * 8.0) + (vWorld.x * 5.0) + vWorld.z * 20.0);
-      vec3 gold = vec3(1.0, 0.72, 0.42);
-      vec3 steel = vec3(0.82, 0.82, 0.78);
-      vec3 darkSteel = vec3(0.08, 0.08, 0.08);
-      vec3 metal = mix(steel, gold, metalBand * 0.38);
-      vec3 base = mix(vColor, metal, 0.44);
-      base = mix(base, darkSteel, sideDepth * 0.42);
-      vec3 color = base * (0.34 + key * 0.88 + fill) + rim * vec3(1.0, 0.82, 0.58);
+      vec3 keyLight = normalize(vec3(-0.45, 0.68, 0.58));
+      vec3 fillLight = normalize(vec3(0.62, -0.28, 0.46));
+      float key = max(dot(n, keyLight), 0.0);
+      float fill = max(dot(n, fillLight), 0.0);
+      float rim = pow(max(1.0 - abs(n.z), 0.0), 1.35);
+      float band = 0.5 + 0.5 * sin(vWorld.y * 10.0 + vWorld.x * 6.0 + vWorld.z * 24.0);
+      vec3 steel = vec3(0.72, 0.72, 0.69);
+      vec3 blackChrome = vec3(0.045, 0.045, 0.047);
+      vec3 champagne = vec3(1.0, 0.76, 0.48);
+      vec3 base = mix(blackChrome, steel, 0.44 + band * 0.24);
+      base = mix(base, champagne, band * 0.22);
+      vec3 color = base * (0.32 + key * 0.92 + fill * 0.32) + rim * vec3(1.0, 0.82, 0.56);
       gl_FragColor = vec4(color, 1.0);
     }
-  `;
+  `);
 
-  const program = createProgram(gl, vertexShader, fragmentShader);
-  if (!program) return;
-
-  const attributes = {
-    position: gl.getAttribLocation(program, "aPosition"),
-    normal: gl.getAttribLocation(program, "aNormal"),
-    color: gl.getAttribLocation(program, "aColor")
-  };
-  const uniforms = {
-    matrix: gl.getUniformLocation(program, "uMatrix"),
-    normalMatrix: gl.getUniformLocation(program, "uNormalMatrix")
-  };
+  const textureProgram = createProgram(gl, `
+    attribute vec3 aPosition;
+    attribute vec2 aUv;
+    uniform mat4 uMatrix;
+    varying vec2 vUv;
+    varying vec3 vWorld;
+    void main() {
+      vUv = aUv;
+      vWorld = aPosition;
+      gl_Position = uMatrix * vec4(aPosition, 1.0);
+    }
+  `, `
+    precision mediump float;
+    uniform sampler2D uTexture;
+    uniform float uFaceLight;
+    varying vec2 vUv;
+    varying vec3 vWorld;
+    void main() {
+      vec4 tex = texture2D(uTexture, vUv);
+      if (tex.a < 0.045) discard;
+      float sheen = 0.5 + 0.5 * sin(vWorld.y * 8.0 + vWorld.x * 4.0 + uFaceLight * 2.0);
+      vec3 highlight = vec3(1.0, 0.78, 0.52) * sheen * 0.12;
+      vec3 color = tex.rgb * (0.86 + uFaceLight * 0.28) + highlight;
+      gl_FragColor = vec4(color, tex.a);
+    }
+  `);
+  if (!meshProgram || !textureProgram) return;
 
   const image = new Image();
   image.decoding = "async";
   image.onload = () => {
-    const mesh = buildLogoMesh(image);
-    const buffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-    gl.bufferData(gl.ARRAY_BUFFER, mesh.vertices, gl.STATIC_DRAW);
+    const sideMesh = buildSideMesh(image);
+    const sideBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, sideBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, sideMesh.vertices, gl.STATIC_DRAW);
 
-    gl.useProgram(program);
-    gl.enableVertexAttribArray(attributes.position);
-    gl.enableVertexAttribArray(attributes.normal);
-    gl.enableVertexAttribArray(attributes.color);
-    gl.vertexAttribPointer(attributes.position, 3, gl.FLOAT, false, 36, 0);
-    gl.vertexAttribPointer(attributes.normal, 3, gl.FLOAT, false, 36, 12);
-    gl.vertexAttribPointer(attributes.color, 3, gl.FLOAT, false, 36, 24);
+    const faceBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, faceBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, buildFaceVertices(), gl.STATIC_DRAW);
+
+    const texture = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, texture);
+    gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, false);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+
     gl.enable(gl.DEPTH_TEST);
     gl.enable(gl.CULL_FACE);
-    gl.cullFace(gl.BACK);
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
     gl.clearColor(0, 0, 0, 0);
     stage.classList.add("is-ready");
 
+    const meshLoc = {
+      position: gl.getAttribLocation(meshProgram, "aPosition"),
+      normal: gl.getAttribLocation(meshProgram, "aNormal"),
+      matrix: gl.getUniformLocation(meshProgram, "uMatrix"),
+      normalMatrix: gl.getUniformLocation(meshProgram, "uNormalMatrix")
+    };
+    const texLoc = {
+      position: gl.getAttribLocation(textureProgram, "aPosition"),
+      uv: gl.getAttribLocation(textureProgram, "aUv"),
+      matrix: gl.getUniformLocation(textureProgram, "uMatrix"),
+      faceLight: gl.getUniformLocation(textureProgram, "uFaceLight"),
+      texture: gl.getUniformLocation(textureProgram, "uTexture")
+    };
+
     let reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    window.matchMedia("(prefers-reduced-motion: reduce)").addEventListener("change", (event) => {
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    motionQuery.addEventListener("change", (event) => {
       reduced = event.matches;
     });
 
     const render = (time) => {
       resizeCanvas();
-      const t = reduced ? 0.2 : time * 0.001;
-      const spin = t * 0.52;
-      const nod = Math.sin(t * 0.9) * 0.11;
-      const matrix = multiply(
-        perspective(36 * Math.PI / 180, canvas.width / canvas.height, 0.1, 20),
-        translate(0, -0.04, -3.25),
-        rotateX(-0.08 + nod),
+      const t = reduced ? 1.4 : time * 0.001;
+      const spin = 0.72 + t * 0.54;
+      const model = multiply(
+        rotateX(-0.1 + Math.sin(t * 0.72) * 0.1),
         rotateY(spin),
-        rotateZ(Math.sin(t * 0.47) * 0.035),
-        scale(1.72, 1.72, 1.72)
+        rotateZ(Math.sin(t * 0.38) * 0.028),
+        scale(1.68, 1.68, 1.68)
       );
-      const normalMatrix = normalFromModel(
-        multiply(
-          rotateX(-0.08 + nod),
-          rotateY(spin),
-          rotateZ(Math.sin(t * 0.47) * 0.035)
-        )
+      const matrix = multiply(
+        perspective(34 * Math.PI / 180, canvas.width / canvas.height, 0.1, 20),
+        translate(0, -0.035, -3.2),
+        model
       );
+      const normalMatrix = normalFromModel(model);
+      const faceLight = 0.5 + 0.5 * Math.cos(spin);
 
       gl.viewport(0, 0, canvas.width, canvas.height);
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-      gl.uniformMatrix4fv(uniforms.matrix, false, matrix);
-      gl.uniformMatrix3fv(uniforms.normalMatrix, false, normalMatrix);
-      gl.drawArrays(gl.TRIANGLES, 0, mesh.count);
+
+      gl.useProgram(meshProgram);
+      gl.bindBuffer(gl.ARRAY_BUFFER, sideBuffer);
+      gl.enableVertexAttribArray(meshLoc.position);
+      gl.enableVertexAttribArray(meshLoc.normal);
+      gl.vertexAttribPointer(meshLoc.position, 3, gl.FLOAT, false, 24, 0);
+      gl.vertexAttribPointer(meshLoc.normal, 3, gl.FLOAT, false, 24, 12);
+      gl.uniformMatrix4fv(meshLoc.matrix, false, matrix);
+      gl.uniformMatrix3fv(meshLoc.normalMatrix, false, normalMatrix);
+      gl.cullFace(gl.BACK);
+      gl.drawArrays(gl.TRIANGLES, 0, sideMesh.count);
+
+      gl.useProgram(textureProgram);
+      gl.bindBuffer(gl.ARRAY_BUFFER, faceBuffer);
+      gl.enableVertexAttribArray(texLoc.position);
+      gl.enableVertexAttribArray(texLoc.uv);
+      gl.vertexAttribPointer(texLoc.position, 3, gl.FLOAT, false, 20, 0);
+      gl.vertexAttribPointer(texLoc.uv, 2, gl.FLOAT, false, 20, 12);
+      gl.uniformMatrix4fv(texLoc.matrix, false, matrix);
+      gl.uniform1f(texLoc.faceLight, faceLight);
+      gl.activeTexture(gl.TEXTURE0);
+      gl.bindTexture(gl.TEXTURE_2D, texture);
+      gl.uniform1i(texLoc.texture, 0);
+      gl.disable(gl.CULL_FACE);
+      gl.drawArrays(gl.TRIANGLES, 0, 12);
+      gl.enable(gl.CULL_FACE);
+
       requestAnimationFrame(render);
     };
     requestAnimationFrame(render);
   };
-  image.src = source;
+  image.src = logoUrl;
 
-  function buildLogoMesh(img) {
-    const sample = 106;
+  function buildFaceVertices() {
+    const zFront = 0.34;
+    const zBack = -0.34;
+    const front = [
+      -1, -1, zFront, 0, 1,
+      1, -1, zFront, 1, 1,
+      1, 1, zFront, 1, 0,
+      -1, -1, zFront, 0, 1,
+      1, 1, zFront, 1, 0,
+      -1, 1, zFront, 0, 0
+    ];
+    const back = [
+      1, -1, zBack, 1, 1,
+      -1, -1, zBack, 0, 1,
+      -1, 1, zBack, 0, 0,
+      1, -1, zBack, 1, 1,
+      -1, 1, zBack, 0, 0,
+      1, 1, zBack, 1, 0
+    ];
+    return new Float32Array(front.concat(back));
+  }
+
+  function buildSideMesh(img) {
+    const size = 224;
     const ctxCanvas = document.createElement("canvas");
-    ctxCanvas.width = sample;
-    ctxCanvas.height = sample;
+    ctxCanvas.width = size;
+    ctxCanvas.height = size;
     const ctx = ctxCanvas.getContext("2d", { willReadFrequently: true });
-    ctx.clearRect(0, 0, sample, sample);
-    ctx.drawImage(img, 0, 0, sample, sample);
-    const data = ctx.getImageData(0, 0, sample, sample).data;
-    const solid = new Uint8Array(sample * sample);
-    for (let y = 0; y < sample; y += 1) {
-      for (let x = 0; x < sample; x += 1) {
-        solid[y * sample + x] = data[(y * sample + x) * 4 + 3] > 42 ? 1 : 0;
+    ctx.drawImage(img, 0, 0, size, size);
+    const pixels = ctx.getImageData(0, 0, size, size).data;
+    const alpha = new Uint8Array(size * size);
+    for (let y = 0; y < size; y += 1) {
+      for (let x = 0; x < size; x += 1) {
+        alpha[y * size + x] = pixels[(y * size + x) * 4 + 3] > 34 ? 1 : 0;
       }
     }
 
-    const verts = [];
-    const depth = 0.34;
-    const step = 2 / sample;
-    const half = step / 2;
-
-    for (let y = 0; y < sample; y += 1) {
-      for (let x = 0; x < sample; x += 1) {
-        if (!solid[y * sample + x]) continue;
-        const index = (y * sample + x) * 4;
-        const rgb = [
-          Math.max(data[index] / 255, 0.16),
-          Math.max(data[index + 1] / 255, 0.14),
-          Math.max(data[index + 2] / 255, 0.12)
-        ];
+    const out = [];
+    const step = 2 / size;
+    const zf = 0.34;
+    const zb = -0.34;
+    for (let y = 0; y < size; y += 1) {
+      for (let x = 0; x < size; x += 1) {
+        if (!solid(alpha, size, x, y)) continue;
         const x0 = -1 + x * step;
         const x1 = x0 + step;
-        const y1 = 1 - y * step;
-        const y0 = y1 - step;
-        const zf = depth / 2;
-        const zb = -depth / 2;
-        const face = liftColor(rgb, 1.05);
-        const side = liftColor(rgb, 0.52);
-
-        quad(verts, [x0, y0, zf], [x1, y0, zf], [x1, y1, zf], [x0, y1, zf], [0, 0, 1], face);
-        quad(verts, [x1, y0, zb], [x0, y0, zb], [x0, y1, zb], [x1, y1, zb], [0, 0, -1], side);
-
-        if (!isSolid(solid, sample, x - 1, y)) {
-          quad(verts, [x0, y0 + half, zb], [x0, y0 + half, zf], [x0, y1 - half, zf], [x0, y1 - half, zb], [-1, 0, 0], side);
+        const yTop = 1 - y * step;
+        const yBottom = yTop - step;
+        if (!solid(alpha, size, x - 1, y)) {
+          quad(out, [x0, yBottom, zb], [x0, yBottom, zf], [x0, yTop, zf], [x0, yTop, zb], [-1, 0, 0]);
         }
-        if (!isSolid(solid, sample, x + 1, y)) {
-          quad(verts, [x1, y0 + half, zf], [x1, y0 + half, zb], [x1, y1 - half, zb], [x1, y1 - half, zf], [1, 0, 0], side);
+        if (!solid(alpha, size, x + 1, y)) {
+          quad(out, [x1, yBottom, zf], [x1, yBottom, zb], [x1, yTop, zb], [x1, yTop, zf], [1, 0, 0]);
         }
-        if (!isSolid(solid, sample, x, y - 1)) {
-          quad(verts, [x0 + half, y1, zf], [x1 - half, y1, zf], [x1 - half, y1, zb], [x0 + half, y1, zb], [0, 1, 0], side);
+        if (!solid(alpha, size, x, y - 1)) {
+          quad(out, [x0, yTop, zf], [x1, yTop, zf], [x1, yTop, zb], [x0, yTop, zb], [0, 1, 0]);
         }
-        if (!isSolid(solid, sample, x, y + 1)) {
-          quad(verts, [x0 + half, y0, zb], [x1 - half, y0, zb], [x1 - half, y0, zf], [x0 + half, y0, zf], [0, -1, 0], side);
+        if (!solid(alpha, size, x, y + 1)) {
+          quad(out, [x0, yBottom, zb], [x1, yBottom, zb], [x1, yBottom, zf], [x0, yBottom, zf], [0, -1, 0]);
         }
       }
     }
-    return { vertices: new Float32Array(verts), count: verts.length / 9 };
+    return { vertices: new Float32Array(out), count: out.length / 6 };
   }
 
-  function quad(out, a, b, c, d, normal, color) {
-    vertex(out, a, normal, color);
-    vertex(out, b, normal, color);
-    vertex(out, c, normal, color);
-    vertex(out, a, normal, color);
-    vertex(out, c, normal, color);
-    vertex(out, d, normal, color);
+  function quad(out, a, b, c, d, normal) {
+    vertex(out, a, normal);
+    vertex(out, b, normal);
+    vertex(out, c, normal);
+    vertex(out, a, normal);
+    vertex(out, c, normal);
+    vertex(out, d, normal);
   }
 
-  function vertex(out, position, normal, color) {
-    out.push(position[0], position[1], position[2], normal[0], normal[1], normal[2], color[0], color[1], color[2]);
+  function vertex(out, point, normal) {
+    out.push(point[0], point[1], point[2], normal[0], normal[1], normal[2]);
   }
 
-  function liftColor(color, amount) {
-    return color.map((value) => Math.min(1, Math.max(0.05, value * amount + 0.04)));
-  }
-
-  function isSolid(solid, size, x, y) {
+  function solid(alpha, size, x, y) {
     if (x < 0 || y < 0 || x >= size || y >= size) return false;
-    return solid[y * size + x] === 1;
+    return alpha[y * size + x] === 1;
   }
 
   function resizeCanvas() {
@@ -217,22 +268,22 @@
     }
   }
 
-  function createProgram(gl, vertexSource, fragmentSource) {
-    const vertex = compile(gl, gl.VERTEX_SHADER, vertexSource);
-    const fragment = compile(gl, gl.FRAGMENT_SHADER, fragmentSource);
+  function createProgram(context, vertexSource, fragmentSource) {
+    const vertex = compile(context, context.VERTEX_SHADER, vertexSource);
+    const fragment = compile(context, context.FRAGMENT_SHADER, fragmentSource);
     if (!vertex || !fragment) return null;
-    const program = gl.createProgram();
-    gl.attachShader(program, vertex);
-    gl.attachShader(program, fragment);
-    gl.linkProgram(program);
-    return gl.getProgramParameter(program, gl.LINK_STATUS) ? program : null;
+    const program = context.createProgram();
+    context.attachShader(program, vertex);
+    context.attachShader(program, fragment);
+    context.linkProgram(program);
+    return context.getProgramParameter(program, context.LINK_STATUS) ? program : null;
   }
 
-  function compile(gl, type, source) {
-    const shader = gl.createShader(type);
-    gl.shaderSource(shader, source);
-    gl.compileShader(shader);
-    return gl.getShaderParameter(shader, gl.COMPILE_STATUS) ? shader : null;
+  function compile(context, type, source) {
+    const shader = context.createShader(type);
+    context.shaderSource(shader, source);
+    context.compileShader(shader);
+    return context.getShaderParameter(shader, context.COMPILE_STATUS) ? shader : null;
   }
 
   function perspective(fovy, aspect, near, far) {
