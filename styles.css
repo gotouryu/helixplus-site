@@ -422,11 +422,18 @@ h3 {
   content: none;
 }
 
-.hero-mark {
+.hero-logo-original {
   position: relative;
   z-index: 4;
   width: min(45vw, 610px);
+  aspect-ratio: 1 / 1.18;
   min-width: 360px;
+  overflow: hidden;
+  background:
+    url("./assets/helixplus-logo.png") 50% 4% / 185% auto no-repeat;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 53%, #000 0%, #000 58%, rgba(0, 0, 0, 0.82) 68%, transparent 84%);
+  mask-image: radial-gradient(ellipse at 50% 53%, #000 0%, #000 58%, rgba(0, 0, 0, 0.82) 68%, transparent 84%);
+  clip-path: inset(0 0 0 0 round 0);
   transform: translateY(-3%);
   filter:
     drop-shadow(0 36px 70px rgba(0, 0, 0, 0.55))
@@ -1325,7 +1332,7 @@ h3 {
     margin-top: -22px;
   }
 
-  .hero-mark {
+  .hero-logo-original {
     width: min(82vw, 360px);
     min-width: 0;
   }
