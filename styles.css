@@ -424,9 +424,9 @@ h3 {
 
 .orbit-labels {
   position: absolute;
-  inset: 13% 0 auto;
+  inset: 8% 0 auto;
   z-index: 3;
-  display: grid;
+  display: none;
   grid-template-columns: repeat(4, 1fr);
   gap: 14px;
 }
