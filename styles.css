@@ -410,58 +410,40 @@ h3 {
   content: none;
 }
 
-.hero-mark {
+.hero-logo-3d {
   position: relative;
   z-index: 4;
   width: min(45vw, 610px);
+  aspect-ratio: 1;
   min-width: 360px;
   transform: translateY(-3%);
-  transform-origin: center center;
-  transform-style: preserve-3d;
-  backface-visibility: visible;
-  animation: hero-mark-3d-turn 9s ease-in-out infinite;
-  will-change: transform;
   filter:
     drop-shadow(0 36px 70px rgba(0, 0, 0, 0.55))
     drop-shadow(0 0 46px rgba(236, 208, 168, 0.22));
 }
 
-@keyframes hero-mark-3d-turn {
-  0% {
-    transform: translateY(-3%) rotateX(4deg) rotateY(-30deg) rotateZ(-1deg) scale(0.98);
-    filter:
-      drop-shadow(0 38px 72px rgba(0, 0, 0, 0.58))
-      drop-shadow(0 0 38px rgba(236, 208, 168, 0.16))
-      brightness(0.94);
-  }
-  25% {
-    transform: translateY(-3%) rotateX(-2deg) rotateY(-4deg) rotateZ(0.4deg) scale(1);
-    filter:
-      drop-shadow(0 36px 70px rgba(0, 0, 0, 0.55))
-      drop-shadow(0 0 54px rgba(236, 208, 168, 0.27))
-      brightness(1.08);
-  }
-  50% {
-    transform: translateY(-3%) rotateX(5deg) rotateY(32deg) rotateZ(1deg) scale(0.985);
-    filter:
-      drop-shadow(0 40px 76px rgba(0, 0, 0, 0.6))
-      drop-shadow(0 0 42px rgba(236, 208, 168, 0.18))
-      brightness(0.97);
-  }
-  75% {
-    transform: translateY(-3%) rotateX(-3deg) rotateY(5deg) rotateZ(-0.4deg) scale(1);
-    filter:
-      drop-shadow(0 36px 70px rgba(0, 0, 0, 0.55))
-      drop-shadow(0 0 54px rgba(236, 208, 168, 0.27))
-      brightness(1.08);
-  }
-  100% {
-    transform: translateY(-3%) rotateX(4deg) rotateY(-30deg) rotateZ(-1deg) scale(0.98);
-    filter:
-      drop-shadow(0 38px 72px rgba(0, 0, 0, 0.58))
-      drop-shadow(0 0 38px rgba(236, 208, 168, 0.16))
-      brightness(0.94);
-  }
+.hero-logo-canvas,
+.hero-mark-fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-logo-canvas {
+  z-index: 2;
+  display: block;
+}
+
+.hero-logo-3d.is-ready .hero-mark-fallback {
+  opacity: 0;
+}
+
+.hero-mark-fallback {
+  z-index: 1;
+  object-fit: contain;
+  opacity: 0.92;
+  transition: opacity 240ms ease;
 }
 
 .orbit-labels {
@@ -1431,7 +1413,11 @@ h3 {
     scroll-behavior: auto;
   }
 
-  .hero-mark {
-    animation: none;
+  .hero-logo-canvas {
+    display: none;
+  }
+
+  .hero-logo-3d .hero-mark-fallback {
+    opacity: 1;
   }
 }
