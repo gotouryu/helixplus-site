@@ -424,7 +424,8 @@ h3 {
 
 .hero-mark-canvas,
 .hero-mark-fallback,
-.hero-mark-direction-loop {
+.hero-mark-direction-loop,
+.hero-mark-static {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -457,6 +458,16 @@ h3 {
     saturate(1.04)
     drop-shadow(0 34px 76px rgba(0, 0, 0, 0.62))
     drop-shadow(0 0 40px rgba(236, 208, 168, 0.32));
+}
+
+.hero-mark-static {
+  z-index: 3;
+  object-fit: contain;
+  opacity: 1;
+  transform: scale(0.92);
+  filter:
+    drop-shadow(0 34px 76px rgba(0, 0, 0, 0.62))
+    drop-shadow(0 0 34px rgba(236, 208, 168, 0.28));
 }
 
 .orbit-labels {
