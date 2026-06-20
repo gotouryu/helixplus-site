@@ -13,6 +13,7 @@
     <meta property="og:image" content="https://helixplus.vercel.app/assets/helixplus-mark.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="stylesheet" href="./styles.css" />
+    <script src="./helix-logo-3d.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">本文へ移動</a>
@@ -79,7 +80,10 @@
             <span>APP</span>
             <span>INFRA</span>
           </div>
-          <img class="hero-mark" src="./assets/helixplus-3d-render.png" alt="" />
+          <div class="hero-mark-3d" aria-hidden="true">
+            <canvas class="hero-mark-canvas"></canvas>
+            <img class="hero-mark hero-mark-fallback" src="./assets/helixplus-3d-render.png" alt="" />
+          </div>
           <div class="stage-statement">
             <span>CONSULT / BUILD / GROW</span>
             <strong>経営、営業、現場をつなぎ、必要な技術を組み合わせる。</strong>
