@@ -423,7 +423,8 @@ h3 {
 }
 
 .hero-mark-canvas,
-.hero-mark-fallback {
+.hero-mark-fallback,
+.hero-mark-direction-loop {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -443,6 +444,19 @@ h3 {
 
 .hero-mark-3d.is-ready .hero-mark-fallback {
   opacity: 0;
+}
+
+.hero-mark-direction-loop {
+  z-index: 3;
+  object-fit: contain;
+  opacity: 1;
+  transform: scale(1.1);
+  filter:
+    brightness(1.14)
+    contrast(1.12)
+    saturate(1.04)
+    drop-shadow(0 34px 76px rgba(0, 0, 0, 0.62))
+    drop-shadow(0 0 40px rgba(236, 208, 168, 0.32));
 }
 
 .orbit-labels {
