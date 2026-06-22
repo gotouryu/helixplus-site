@@ -113,83 +113,35 @@
 
     .stream-a {
       opacity: .66;
-      animation: stream-a 19s ease-in-out infinite;
     }
 
     .stream-b {
       opacity: .5;
-      animation: stream-b 24s ease-in-out infinite;
     }
 
     .stream-c {
       opacity: .38;
-      animation: stream-c 28s ease-in-out infinite;
     }
 
     .stream-d {
       opacity: .3;
-      animation: stream-d 33s ease-in-out infinite;
     }
 
     .stream-e {
       opacity: .34;
-      animation: stream-e 26s ease-in-out infinite;
     }
 
     .stream-f {
       opacity: .24;
-      animation: stream-f 38s ease-in-out infinite;
     }
 
     .stream-g {
       opacity: .28;
-      animation: stream-g 31s linear infinite;
     }
 
     @keyframes flow-right {
       from { transform: translateX(-560px); }
       to { transform: translateX(0); }
-    }
-
-    @keyframes stream-a {
-      0%, 100% { transform: translate(-600px, 340px) rotate(-7deg) scale(1, .88); }
-      43% { transform: translate(-582px, 327px) rotate(-3deg) scale(1.04, 1.08); }
-      72% { transform: translate(-612px, 350px) rotate(-10deg) scale(.98, .58); }
-    }
-
-    @keyframes stream-b {
-      0%, 100% { transform: translate(-650px, 500px) rotate(8deg) scale(1.16, .72); }
-      50% { transform: translate(-682px, 517px) rotate(13deg) scale(1.2, 1.14); }
-    }
-
-    @keyframes stream-c {
-      0%, 100% { transform: translate(-540px, 635px) rotate(-15deg) scale(.86, .52); }
-      50% { transform: translate(-514px, 652px) rotate(-21deg) scale(.92, .88); }
-    }
-
-    @keyframes stream-d {
-      0%, 100% { transform: translate(-700px, 218px) rotate(4deg) scale(.72, .42); }
-      50% { transform: translate(-721px, 207px) rotate(9deg) scale(.78, .76); }
-    }
-
-    @keyframes stream-e {
-      0%, 100% { transform: translate(-640px, 410px) rotate(-2deg) scale(1.04, .72); }
-      33% { transform: translate(-610px, 392px) rotate(5deg) scale(1.08, 1.02); }
-      66% { transform: translate(-672px, 428px) rotate(-9deg) scale(1, .58); }
-    }
-
-    @keyframes stream-f {
-      0%, 100% { transform: translate(-760px, 580px) rotate(12deg) scale(.94, .54); }
-      40% { transform: translate(-728px, 604px) rotate(4deg) scale(1.02, .92); }
-      72% { transform: translate(-790px, 562px) rotate(18deg) scale(.9, .46); }
-    }
-
-    @keyframes stream-g {
-      0% { transform: translate(-690px, 465px) rotate(-12deg) scale(.82, .48); }
-      25% { transform: translate(-660px, 448px) rotate(-4deg) scale(.9, .78); }
-      50% { transform: translate(-632px, 470px) rotate(4deg) scale(.96, 1.02); }
-      75% { transform: translate(-662px, 492px) rotate(12deg) scale(.9, .78); }
-      100% { transform: translate(-690px, 465px) rotate(20deg) scale(.82, .48); }
     }
 
     @keyframes steel-roll {
@@ -240,13 +192,6 @@
 
     @media (prefers-reduced-motion: reduce) {
       .flow-right,
-      .stream-a,
-      .stream-b,
-      .stream-c,
-      .stream-d,
-      .stream-e,
-      .stream-f,
-      .stream-g,
       .steel,
       .gold,
       .shadow-a,
